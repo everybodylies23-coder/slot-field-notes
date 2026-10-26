@@ -921,6 +921,20 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.8);
     }
 
+
+/* 設定5/6の比較は、スマホの初期表示で項目と両設定を並べる。 */
+@media(max-width:600px){
+ .settings-comparison table{table-layout:fixed;width:calc(var(--comparison-width,300px) + 280px);min-width:0!important;max-width:none}
+ .settings-comparison .compare-item{width:calc(var(--comparison-width,300px) * .32)}
+ .settings-comparison .compare-five,.settings-comparison .compare-six{width:calc(var(--comparison-width,300px) * .34)}
+ .settings-comparison .compare-points{width:280px}
+ .settings-comparison th,.settings-comparison td{min-width:0!important;white-space:normal!important;overflow-wrap:anywhere;padding:9px 6px;font-size:12px;line-height:1.5}
+ .settings-comparison th b,.settings-comparison td b{font-size:inherit!important}
+ .settings-comparison .compare-heading-full{display:none}
+ .settings-comparison .compare-heading-short{display:inline}
+}
+@media(min-width:601px){.settings-comparison .compare-heading-short{display:none}}
+
 </style>
 </head>
 <body class="theme-constructivist">
@@ -1439,10 +1453,12 @@
           ・<b>設定5（荒波・爆発力特化）</b>: 機械割111.0%と超優秀ながら、時に3〜4周期ハマリが顔を出す。しかし「復讐の焔成功時の裏景之ST突入率が25.0%（設定1〜3の4倍）」と強烈で、一度の上位突入で万枚を叩き出す破壊力を持つ！
         </div>
 
-        <div class="table-responsive">
+        <p class="settings-comparison-hint" style="font-size:12px;margin:8px 0;">項目・設定5・設定6を並べて比較できます。詳しい判別ポイントは表を右へ横スクロールしてください。</p>
+        <div class="table-responsive settings-comparison" tabindex="0" role="region" aria-label="設定5と設定6の比較表。右へスクロールすると判別ポイントを表示">
           <table>
+            <colgroup><col class="compare-item"><col class="compare-five"><col class="compare-six"><col class="compare-points"></colgroup>
             <thead>
-              <tr><th>比較判別項目</th><th>設定5（荒波・万枚トリガー型）</th><th>設定6（看板・ド安定ギザギザ型）</th><th>判別・看破のポイント</th></tr>
+              <tr><th>比較判別項目</th><th><span class="compare-heading-full">設定5（荒波・万枚トリガー型）</span><span class="compare-heading-short">設定5</span></th><th><span class="compare-heading-full">設定6（看板・ド安定ギザギザ型）</span><span class="compare-heading-short">設定6</span></th><th>判別・看破のポイント</th></tr>
             </thead>
             <tbody>
               <tr class="row-highlight">
@@ -2778,5 +2794,8 @@
     });
   </script>
 
+<script>
+(()=>{const box=document.querySelector('.settings-comparison');if(!box)return;const size=()=>{if(box.clientWidth)box.style.setProperty('--comparison-width',box.clientWidth+'px')};size();if(globalThis.ResizeObserver)new ResizeObserver(size).observe(box);else window.addEventListener('resize',size)})();
+</script>
 </body>
 </html>
