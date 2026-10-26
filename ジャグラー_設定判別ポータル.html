@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#be1e2d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>【ガリぞう調べ完全網羅】6号機ジャグラーシリーズ設定判別＆詳細解析ポータル</title>
+
+  <!-- Google Fonts: Bebas Neue, Oswald, Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #0c0d12;
+      --bg-card: #161720;
+      --bg-card-sub: #1f212d;
+      --text-main: #f3f4f6;
+      --text-sub: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-red: #ef4444;
+      --accent-gold: #f59e0b;
+      --accent-purple: #a855f7;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --border: #282b3a;
+      --border-light: #374151;
+      --safe-bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    /* ================================================================
+       CONSTRUCTIVIST EDITORIAL THEME (高コントラスト・ロシア構成主義スタイル)
+       ================================================================ */
+    body.theme-constructivist {
+      --bg-main: #f5eedc;
+      --bg-card: #fbf7ed;
+      --bg-card-sub: #eee5d0;
+      --text-main: #141414;
+      --text-sub: #37332d;
+      --text-muted: #575249;
+      --accent-red: #be1e2d;
+      --accent-gold: #b45309;
+      --accent-purple: #7e22ce;
+      --accent-blue: #1d4ed8;
+      --accent-green: #15803d;
+      --border: #141414;
+      --border-light: #2b2b2b;
+      background-image: radial-gradient(#e5dcbe 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+      color: #141414;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: calc(75px + var(--safe-bottom));
+      user-select: none;
+    }
+
+    /* ヘッダー */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #be1e2d;
+      border-bottom: 3px solid #141414;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-back-btn {
+      background: #141414;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #ffffff;
+      text-decoration: none;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .header-badge {
+      background: #141414;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: 1px solid #ffffff;
+      letter-spacing: 0.5px;
+    }
+    .header-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: #ffffff;
+      font-family: 'Oswald', 'Noto Sans JP', sans-serif;
+      letter-spacing: 0.5px;
+    }
+    .theme-btn {
+      background: #ffffff;
+      color: #141414;
+      border: 2px solid #141414;
+      box-shadow: 2px 2px 0px #141414;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .search-box {
+      background: #ffffff;
+      color: #141414;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      font-weight: 700;
+      padding: 4px 8px;
+      font-size: 12px;
+      width: 90px;
+    }
+    .search-box:focus {
+      outline: none;
+      width: 130px;
+      transition: width 0.2s;
+    }
+
+    /* サブナビ（上部機種切り替えタブ） */
+    .top-subnav {
+      position: sticky;
+      top: 48px;
+      z-index: 90;
+      display: flex;
+      gap: 5px;
+      overflow-x: auto;
+      padding: 8px 10px;
+      background: #fbf7ed;
+      border-bottom: 2px solid #141414;
+      white-space: nowrap;
+      scrollbar-width: none;
+    }
+    .top-subnav::-webkit-scrollbar { display: none; }
+    .subnav-btn {
+      background: #ffffff;
+      color: #141414;
+      border: 2px solid #141414;
+      font-weight: 800;
+      border-radius: 4px;
+      box-shadow: 2px 2px 0px #141414;
+      padding: 6px 11px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.1s;
+      flex-shrink: 0;
+    }
+    .subnav-btn.active {
+      background: #be1e2d !important;
+      color: #ffffff !important;
+      border-color: #141414 !important;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px #141414 !important;
+    }
+
+    main {
+      padding: 12px 10px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .tab-pane {
+      display: none;
+    }
+    .tab-pane.active {
+      display: block;
+    }
+
+    /* カードコンポーネント */
+    .card {
+      background: #fbf7ed;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      box-shadow: 4px 4px 0px #141414;
+      margin-bottom: 14px;
+      padding: 12px;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #141414;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+    .card-title {
+      color: #141414;
+      font-family: 'Oswald', 'Noto Sans JP', sans-serif;
+      font-weight: 900;
+      font-size: 14.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border: 1px solid #141414;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .tag-red { background: #fee2e2; color: #991b1b; }
+    .tag-purple { background: #f3e8ff; color: #6b21a8; }
+    .tag-gold { background: #fef3c7; color: #92400e; }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-green { background: #dcfce7; color: #166534; }
+    .tag-pink { background: #fce7f3; color: #9d174d; }
+
+    /* テーブルデザイン */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      box-shadow: 3px 3px 0px #141414;
+      background: #ffffff;
+      margin: 8px 0;
+      scrollbar-width: none;
+    }
+    .table-responsive::-webkit-scrollbar { display: none; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    th {
+      background: #be1e2d;
+      color: #ffffff;
+      border-bottom: 2px solid #141414;
+      border-right: 1px solid rgba(255,255,255,0.25);
+      padding: 7px 6px;
+      font-weight: 900;
+      font-size: 11.5px;
+      letter-spacing: 0.3px;
+    }
+    td {
+      border-bottom: 1px solid #141414;
+      border-right: 1px solid #ded6c0;
+      padding: 7px 6px;
+      color: #141414;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td { background: #fdfaf3; }
+    .row-highlight td { background: #fef9c3 !important; }
+    
+    /* 設定6の配色：黄緑・緑系統の背景（#eefde6）＋鮮明な赤文字（#b91c1c） */
+    .row-setting-6 td {
+      background: #eefde6 !important;
+      color: #b91c1c !important;
+      font-weight: 800 !important;
+      border-top: 1.5px solid #141414;
+      border-bottom: 2px solid #141414 !important;
+    }
+    .row-setting-6 td b,
+    .row-setting-6 td strong {
+      color: #b91c1c !important;
+      font-weight: 900 !important;
+    }
+    td.col-setting-6 {
+      background: #15803d !important;
+      color: #ffffff !important;
+      font-weight: 900 !important;
+      border-right: 2px solid #141414 !important;
+      letter-spacing: 0.5px;
+    }
+    .col-setting {
+      font-weight: 900;
+      background: #f5eedc !important;
+      border-right: 2px solid #141414 !important;
+    }
+
+    /* バナーBOX */
+    .banner-box {
+      background: #ffffff;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      box-shadow: 3px 3px 0px #141414;
+      color: #141414;
+      font-size: 13px;
+      line-height: 1.65;
+      padding: 10px 12px;
+      margin: 8px 0;
+    }
+    .banner-box-title {
+      font-size: 13.5px;
+      font-weight: 900;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .banner-gold {
+      background: #fffbeb !important;
+      border-left: 6px solid #b45309 !important;
+    }
+    .banner-info {
+      background: #eff6ff !important;
+      border-left: 6px solid #1d4ed8 !important;
+    }
+    .banner-success {
+      background: #f0fdf4 !important;
+      border-left: 6px solid #15803d !important;
+    }
+    .banner-danger {
+      background: #fef2f2 !important;
+      border-left: 6px solid #be1e2d !important;
+    }
+    .source-credit {
+      font-size: 11px;
+      color: #575249;
+      margin-top: 4px;
+      display: block;
+      border-top: 1px dashed #d1c7ad;
+      padding-top: 4px;
+    }
+
+    /* 文字強調（高コントラスト設計） */
+    .val-best { color: #b91c1c; font-weight: 900; font-size: 13.5px; }
+    .val-gold { color: #854d0e; font-weight: 900; }
+    .val-green { color: #14532d; font-weight: 900; }
+    .text-red { color: #991b1b; font-weight: 800; }
+    .text-gold { color: #854d0e; font-weight: 800; }
+    .text-green { color: #14532d; font-weight: 800; }
+    .text-blue { color: #1e40af; font-weight: 800; }
+    .text-purple { color: #581c87; font-weight: 800; }
+    .text-sub { color: #575249; font-weight: 600; }
+
+    /* ボトムナビ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fbf7ed;
+      border-top: 2px solid #141414;
+      display: flex;
+      overflow-x: auto;
+      padding: 6px 4px calc(6px + var(--safe-bottom));
+      z-index: 100;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+      scrollbar-width: none;
+    }
+    .bottom-nav::-webkit-scrollbar { display: none; }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #141414;
+      font-size: 9px;
+      font-weight: 800;
+      cursor: pointer;
+      min-width: 44px;
+      flex: 1;
+      padding: 2px 1px;
+      transition: transform 0.1s;
+      white-space: nowrap;
+    }
+    .nav-item svg {
+      width: 17px;
+      height: 17px;
+      margin-bottom: 2px;
+      fill: currentColor;
+    }
+    .nav-item.active {
+      color: #be1e2d;
+      transform: translateY(-1px);
+    }
+
+    /* アクションボタン */
+    .action-btn {
+      background: #be1e2d;
+      color: #ffffff;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      box-shadow: 3px 3px 0px #141414;
+      font-weight: 900;
+      font-size: 13px;
+      padding: 8px 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .action-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #141414;
+    }
+
+    /* 逆算ツール入力枠 */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .calc-input-box {
+      background: #ffffff;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      padding: 6px 8px;
+    }
+    .calc-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--text-sub);
+      margin-bottom: 2px;
+    }
+    .calc-input {
+      width: 100%;
+      border: 1px solid #141414;
+      border-radius: 3px;
+      padding: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #141414;
+      background: #fbf7ed;
+      text-align: right;
+    }
+    .prompt-box {
+      background: #090a0e;
+      border: 2px solid #141414;
+      border-radius: 4px;
+      padding: 10px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 11.5px;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      word-break: break-all;
+      width: 100%;
+      height: 180px;
+      box-sizing: border-box;
+      margin-top: 8px;
+    }
+
+    /* プレースホルダー（実践データ記録スロット） */
+    .placeholder-card {
+      border: 2px dashed #b45309;
+      background: #fffdf5;
+      padding: 12px;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .placeholder-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: #b45309;
+      margin-bottom: 4px;
+    }
+    .placeholder-desc {
+      font-size: 11.5px;
+      color: #575249;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body class="theme-constructivist">
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="header-back-btn" title="総合ポータルへ戻る">◀ HOME</a>
+      <span class="header-badge">6号機ジャグラー</span>
+      <div class="header-title">ジャグラー設定判別ポータル</div>
+    </div>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <button id="themeToggleBtn" onclick="togglePortalTheme()" class="theme-btn" title="テーマ切替">🎨 スタイル切替</button>
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍 検索">
+    </div>
+  </header>
+
+  <!-- 上部サブナビゲーション（機種別タブ：全7機種＋比較＋ツール） -->
+  <nav class="top-subnav">
+    <button class="subnav-btn active" data-tab="tab-im">🤡 ネオアイム</button>
+    <button class="subnav-btn" data-tab="tab-my">🐯 マイジャグラーV</button>
+    <button class="subnav-btn" data-tab="tab-girls">🎀 ガールズSS</button>
+    <button class="subnav-btn" data-tab="tab-happy">🍀 ハッピージャグラーVⅢ</button>
+    <button class="subnav-btn" data-tab="tab-miracle">🚀 ウルトラミラクル</button>
+    <button class="subnav-btn" data-tab="tab-mr">🎩 ミスタージャグラー</button>
+    <button class="subnav-btn" data-tab="tab-gogo">⚡ ゴーゴージャグラー3</button>
+    <button class="subnav-btn" data-tab="tab-compare">⚖️ 7機種スペック比較</button>
+    <button class="subnav-btn" data-tab="tab-calc">🧮 逆算シミュレータ＆AI</button>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================== -->
+    <!-- タブ1: SアイムジャグラーEX（ネオアイム） -->
+    <!-- ============================================================== -->
+    <section id="tab-im" class="tab-pane active">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🤡 SアイムジャグラーEX（ネオアイム） 6号機</div>
+          <span class="card-tag tag-red">北電子の看板王道</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：アイム設定看破の鉄則】</b><br>
+          ・<b>REG確率は設定5・6共通で同値（1/255.0）！</b> REGだけでは設定5と6の区別がつきません。<br>
+          ・<b>ブドウ確率は設定1〜5が共通（約1/6.02）、設定6のみ優遇（約1/5.78）！</b><br>
+          ・そのため、設定6を見抜く決め手は「ブドウ確率」の突出度。序盤にブドウが良くても中間設定の可能性は十分ある点に注意！
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／公式ブログ『ガリぞうの徒然日記』アイム編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(ベル・ピエロ・ブドウ抜き)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/273.1</td><td>1/439.8</td><td>1/168.5</td><td>97.0%</td><td>97.97%</td><td>98.70%</td><td>約 40.0G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/269.7</td><td>1/399.6</td><td>1/161.4</td><td>98.0%</td><td>99.09%</td><td>99.82%</td><td>約 40.0G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/269.7</td><td>1/331.0</td><td>1/148.6</td><td>99.5%</td><td>100.75%</td><td>101.48%</td><td>約 40.0G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/259.0</td><td>1/315.1</td><td>1/142.2</td><td>101.1%</td><td><b class="val-gold">102.53%</b></td><td>103.27%</td><td>約 40.0G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/259.0</td><td><b class="val-green">1/255.0</b></td><td>1/128.5</td><td>103.3%</td><td><b class="val-green">104.93%</b></td><td>105.66%</td><td>約 40.0G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/255.0</b></td><td><b class="val-best">1/255.0</b></td><td><b class="val-best">1/127.5</b></td><td>105.5%</td><td><b class="val-best">107.29%</b></td><td><b class="val-best">108.01%</b></td><td><b class="val-best">約 41.5G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ）</div>
+          <span class="card-tag tag-purple">設定6のみ突出</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ブドウ確率の特異な性質】</b><br>
+          設定1〜5まではほぼ同一数値（約1/6.02）となっており、<b>設定6のみ約1/5.78と段違いに軽くなる</b>のがアイムの特徴。1,000G・3,000G・8,000Gでの成立回数の目安は以下の通りです。
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう逆算値)</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>設定6との成立回数差</th>
+                <th>ブドウ信頼度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td><b>1 / 6.02</b></td><td>166.1 回</td><td>498.3 回</td><td>1,328.9 回</td><td>-55.2 回</td><td>-</td></tr>
+              <tr><td class="col-setting">設定2</td><td><b>1 / 6.02</b></td><td>166.1 回</td><td>498.3 回</td><td>1,328.9 回</td><td>-55.2 回</td><td>-</td></tr>
+              <tr><td class="col-setting">設定3</td><td><b>1 / 6.02</b></td><td>166.1 回</td><td>498.3 回</td><td>1,328.9 回</td><td>-55.2 回</td><td>-</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td><b>1 / 6.02</b></td><td>166.1 回</td><td>498.3 回</td><td>1,328.9 回</td><td>-55.2 回</td><td>過信厳禁</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b>1 / 6.02</b></td><td>166.1 回</td><td>498.3 回</td><td>1,328.9 回</td><td>-55.2 回</td><td>設定5でも1/6.02</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.78</b></td><td><b class="val-best">173.0 回</b></td><td><b class="val-best">519.0 回</b></td><td><b class="val-best">1,384.1 回</b></td><td><b class="val-best">基準 (+55.2回)</b></td><td><b>設定6看破の命綱！</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（チェリー・ベル・ピエロ別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（チェリー・ベル・ピエロ）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>チェリー確率 (合算)</th><th>ベル確率</th><th>ピエロ確率</th><th>備考・技術介入</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">全設定共通</td><td><b>1 / 33.0</b></td><td>1 / 1092.3</td><td>1 / 1092.3</td><td>左リールBAR狙いでチェリーフォロー。ベル・ピエロは狙い分け困難なため適当押しでも損失極小</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（単独REG・チェリー重複詳細） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（単独REG＆チェリー重複内訳）</div>
+          <span class="card-tag tag-gold">設定差特大</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          アイムのREG当選は「単独REG」と「チェリー重複REG」がおよそ7：3の割合で出現。どちらの当選契機にも設定差が存在します。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率</th><th>チェリー重複REG確率</th><th>単独BIG確率</th><th>チェリー重複BIG確率</th><th>判別重要度</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 630.15</td><td>1 / 1456.36</td><td>1 / 399.6</td><td>1 / 1489.5</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 574.88</td><td>1 / 1310.72</td><td>1 / 394.8</td><td>1 / 1489.5</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 474.90</td><td>1 / 1092.27</td><td>1 / 394.8</td><td>1 / 1489.5</td><td>中間設定</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 448.88</td><td>1 / 1057.03</td><td>1 / 376.6</td><td>1 / 1365.3</td><td>妥協ライン</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 364.09</b></td><td><b class="val-green">1 / 851.12</b></td><td>1 / 376.6</td><td>1 / 1365.3</td><td><b>高設定域！</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 364.09</b></td><td><b class="val-best">1 / 851.12</b></td><td>1 / 372.4</td><td>1 / 1336.5</td><td><b>高設定域！</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="banner-box banner-success" style="margin-top:10px;">
+          <b>【ネオアイム 現場立ち回りチェックライン】</b><br>
+          ・単独REGが <b>1/400 以上</b>、チェリー重複REGが <b>1/900 以上</b>で推移しているか。<br>
+          ・2,000G消化時点でブドウが <b>1/5.85 を切っていれば設定6濃厚</b>、1/6.00付近なら設定5止まりまたは下振れを警戒。
+        </div>
+
+        <!-- 実践データカード（ガリぞう ななプレス高設定確信実戦） -->
+        <div class="card" style="border: 2px solid #15803d; background: #f0fdf4; margin-top: 14px;">
+          <div class="card-header" style="border-bottom: 2px solid #15803d;">
+            <div class="card-title" style="color: #15803d;">
+              🏆 【ななプレス・ガリぞう実戦】SアイムジャグラーEX 設定6看破・確信データ
+            </div>
+            <span class="card-tag" style="background:#15803d; color:#ffffff;">収支日記#107検証回</span>
+          </div>
+          <div style="font-size: 12.5px; line-height: 1.65; color: #141414;">
+            <div style="background: #ffffff; border: 1.5px solid #141414; border-radius: 4px; padding: 10px; margin-bottom: 8px;">
+              <b>【終日ブン回し・設定6確信データ（参考目標値）】</b><br>
+              ・総回転数：<b>8,120G</b> ｜ BIG：<b>34回 (1/238.8)</b> ｜ REG：<b>33回 (1/246.1)</b> ｜ 合算：<b>1/121.2</b><br>
+              ・ブドウ確率：<b>1/5.77 (1,407個)</b>【設定6公表推計値: 1/5.78と完全合致】<br>
+              ・差枚数：<b>約 +3,150枚</b>
+            </div>
+
+            <!-- 収支日記#107 掲載：ガリぞう実戦履歴ログ（押し引きの神髄） -->
+            <div style="background: #ffffff; border: 1.5px solid #141414; border-radius: 4px; padding: 10px; margin-bottom: 8px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                <b style="font-size:12.5px; color:#15803d;">📝 【収支日記#107 掲載】Sアイム A番台 実戦履歴ログ（見切り実例）</b>
+                <span class="card-tag tag-blue">押し引き判断ログ</span>
+              </div>
+              <div style="font-size:11.5px; color:#475569; margin-bottom:6px;">
+                来店実戦にて朝から実戦。ボーナス合算だけ見れば好調に見える展開から、ブドウ数値と単独REGからシビアに見切ったガリぞう流の判断ログ。
+              </div>
+              
+              <div class="table-responsive" style="margin:4px 0 6px;">
+                <table style="font-size:11px;">
+                  <thead>
+                    <tr style="background:#f1f5f9;">
+                      <th>G数</th>
+                      <th>当選役</th>
+                      <th>契機・備考</th>
+                      <th>投資・出玉状況</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>365G</td><td><b style="color:#2563eb;">REG</b></td><td>単独REG</td><td>投資 500枚</td></tr>
+                    <tr><td>70G</td><td><b style="color:#dc2626;">BIG</b></td><td>単独BIG</td><td>持ちメダル</td></tr>
+                    <tr><td>36G</td><td><b style="color:#2563eb;">REG</b></td><td>チェリー重複REG</td><td>持ちメダル</td></tr>
+                    <tr><td>42G</td><td><b style="color:#2563eb;">REG</b></td><td>チェリー重複REG</td><td>持ちメダル</td></tr>
+                    <tr><td>254G</td><td><b style="color:#dc2626;">BIG</b></td><td>チェリー重複BIG</td><td>持ちメダル</td></tr>
+                    <tr><td>193G</td><td><b style="color:#dc2626;">BIG</b></td><td>チェリー重複BIG</td><td>持ちメダル</td></tr>
+                    <tr><td>214G</td><td><b style="color:#64748b;">ヤメ</b></td><td>見切り撤退</td><td>流し 684枚（+184枚）</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:3px; padding:6px 8px; font-size:11px; line-height:1.5;">
+                📊 <b>1,175G消化時点の集計</b>：BIG 3回 (1/391.7) ｜ REG 3回 (1/391.7) ｜ 単独REG 1回 (1/1175)<br>
+                🍇 <b>通常時ブドウ</b>：<b>1/6.12 (192個)</b> ➡ 設定1〜5共通値(1/6.02)よりも悪く、設定6(1/5.78)の気配なしと判断し早期撤退。
+              </div>
+            </div>
+
+            <div style="background: #fffbeb; border-left: 4px solid #b45309; padding: 8px 10px; font-size: 12px; margin-bottom: 6px;">
+              <b>🎯 ガリぞう氏の確信・見切りポイント：</b><br>
+              「6号機アイムは設定5と6でREG確率が同値（1/255.0）。REGだけ引けても設定5止まりの可能性が常にある。アイムで設定6と胸を張って確信できる唯一のシグナルは<b>『ブドウ1/5.80以下』</b>と<b>『店側の強い根拠』</b>の2つが重なった瞬間。ブドウが1/6.00を超えて悪化している台は、たとえREGが引けていても設定6期待度は極めて低いため深追いは禁物」。
+            </div>
+            <div style="font-size: 11px; color: #555555; text-align: right;">
+              出典：ななプレス連載『ガリぞうの収支日記』第107回／SアイムジャグラーEX-TP解析・実戦記
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ2: SマイジャグラーV -->
+    <!-- ============================================================== -->
+    <section id="tab-my" class="tab-pane">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🐯 SマイジャグラーV（ファイブ） 6号機</div>
+          <span class="card-tag tag-gold">シリーズ最高峰スペック</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：マイジャグV設定看破の2本柱】</b><br>
+          ・<b>単独REG確率（設定1: 1/655.36 ➡ 設定6: 1/327.68）ちょうど2.0倍の特大格差！</b><br>
+          ・<b>ブドウ確率は設定1〜6にかけて段階的に向上！設定6は1/5.79（実戦値では1/5.66〜1/5.70）！</b><br>
+          ・単独REGとブドウの「掛け算」で判断するのが鉄則。フル攻略時の機械割は設定6で<b>112.44%</b>とハイスペック機に匹敵！
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／パチスロ必勝本コラム『プロスロ』マイジャグV編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(完全技術介入)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/273.1</td><td>1/409.6</td><td>1/163.8</td><td>97.0%</td><td>97.84%</td><td>98.61%</td><td>約 41.5G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/270.8</td><td>1/385.5</td><td>1/159.1</td><td>98.0%</td><td>98.80%</td><td>99.73%</td><td>約 41.8G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/266.4</td><td>1/336.1</td><td>1/148.6</td><td>99.9%</td><td>100.80%</td><td>101.97%</td><td>約 42.0G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/254.0</td><td>1/290.0</td><td>1/135.4</td><td>102.8%</td><td><b class="val-gold">103.84%</b></td><td>105.09%</td><td>約 42.0G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/240.1</td><td>1/268.6</td><td>1/126.8</td><td>105.3%</td><td><b class="val-green">106.55%</b></td><td>107.97%</td><td>約 42.0G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/229.1</b></td><td><b class="val-best">1/229.1</b></td><td><b class="val-best">1/114.6</b></td><td>109.4%</td><td><b class="val-best">110.45%</b></td><td><b class="val-best">112.44%</b></td><td><b class="val-best">約 42.5G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ）</div>
+          <span class="card-tag tag-green">段階的設定差</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ブドウ確率の推移と見極め】</b><br>
+          アイムと違い、マイジャグVは設定1から設定6にかけて<b>段階的にブドウ確率が良くなる</b>設計。ガリぞう氏の逆算値では1/5.90〜1/5.79、実戦値では設定6で1/5.66〜1/5.70付近が報告されています。
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう逆算値)</th>
+                <th>実戦推計目安</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>看破信頼度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 5.90</td><td>約 1/5.92</td><td>169.5 回</td><td>508.5 回</td><td>1,355.9 回</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 5.86</td><td>約 1/5.88</td><td>170.6 回</td><td>511.9 回</td><td>1,365.2 回</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 5.83</td><td>約 1/5.83</td><td>171.5 回</td><td>514.6 回</td><td>1,372.2 回</td><td>中間設定</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 5.83</td><td>約 1/5.80</td><td>171.5 回</td><td>514.6 回</td><td>1,372.2 回</td><td>中間〜好挙動</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1 / 5.83</td><td>約 1/5.76</td><td>171.5 回</td><td>514.6 回</td><td>1,372.2 回</td><td>高設定域</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.79</b></td><td><b class="val-best">約 1/5.66〜5.70</b></td><td><b class="val-best">172.7〜176.7回</b></td><td><b class="val-best">518.1〜530.0回</b></td><td><b class="val-best">1,381.7〜1,413回</b></td><td><b>最重要看破軸！</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（チェリー・ベル・ピエロ別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（チェリー・ベル・ピエロ）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>チェリー確率</th><th>ベル確率</th><th>ピエロ確率</th><th>備考・技術介入</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">全設定共通</td><td><b>1 / 36.0</b></td><td>1 / 1024.0</td><td>1 / 1024.0</td><td>左リール枠上〜上段BAR狙いでチェリー完全奪取。ボーナス告知時は1枚掛けで中押しブドウ抜き手順を実行</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（単独REG・チェリー重複詳細） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（単独ボーナス ＆ チェリー重複）</div>
+          <span class="card-tag tag-red">単独REG 2倍差</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          単独REG確率は設定1と6で<b>1/655.36 ➡ 1/327.68とジャグラー屈指の2倍差</b>！高低の判別に最も信頼が置ける数値です。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率<br>(最重要！)</th><th>チェリー重複REG</th><th>単独BIG確率</th><th>チェリー重複BIG</th><th>看破信頼度</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 655.36</td><td>1 / 1092.27</td><td>1 / 409.60</td><td>1 / 1424.70</td><td>設定1極低</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 601.25</td><td>1 / 1074.36</td><td>1 / 407.06</td><td>1 / 1394.38</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 492.75</td><td>1 / 1057.03</td><td>1 / 399.61</td><td>1 / 1365.33</td><td>中間ライン</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td><b class="val-gold">1 / 407.06</b></td><td>1 / 1008.25</td><td>1 / 378.82</td><td>1 / 1285.02</td><td><b>勝負ライン</b></td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 390.10</b></td><td><b class="val-green">1 / 862.32</b></td><td>1 / 354.25</td><td>1 / 1213.63</td><td><b>高設定域！</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 327.68</b></td><td><b class="val-best">1 / 762.05</b></td><td><b class="val-best">1 / 337.81</b></td><td><b class="val-best">1 / 1129.93</b></td><td><b>★鉄板確定級</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="banner-box banner-success" style="margin-top:10px;">
+          <b>【マイジャグラーV 現場立ち回りチェックライン】</b><br>
+          ・単独REGが <b>1/360 以上</b>、ブドウが <b>1/5.75 を切る</b>ペースで出現していれば設定6濃厚。<br>
+          ・BIGが引けずに揉み合っていても、単独REGとブドウが強ければ終日ブン回しが推奨されます。
+        </div>
+
+        <!-- 実践データカード（ガリぞう ななプレス高設定確信実戦） -->
+        <div class="card" style="border: 2px solid #b45309; background: #fffdf5; margin-top: 14px;">
+          <div class="card-header" style="border-bottom: 2px solid #b45309;">
+            <div class="card-title" style="color: #b45309;">
+              🏆 【ななプレス・ガリぞう実戦】マイジャグラーV 設定6確信ツモ 2大実戦データ
+            </div>
+            <span class="card-tag" style="background:#b45309; color:#ffffff;">高設定看破バイブル</span>
+          </div>
+          
+          <!-- 実戦事例1: 収支日記#178 -->
+          <div style="background: #ffffff; border: 1.5px solid #141414; border-radius: 4px; padding: 10px; margin-bottom: 12px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <b style="font-size:13px; color:#be1e2d;">CASE 1：収録実戦でマイジャグV 推定6をツモった日【収支日記#178】</b>
+              <span class="card-tag tag-red">推定設定6（+1,666枚）</span>
+            </div>
+            <div style="font-size: 12px; line-height: 1.6; color: #141414; margin-bottom: 8px;">
+              ・<b>実戦概要</b>：長野県松本市での「勝ちスロコミットJ」収録実戦。ホールの状況・配分傾向と台挙動から超高設定台を後ヅモ。<br>
+              ・<b>打ち始め時（前任者データ）</b>：<b>4,735G ｜ BIG 14回 (1/338.2) ｜ REG 27回 (1/175.3)</b> という超REG先行台。<br>
+              ・<b>ガリぞう自身の実戦数値（3,301G）</b>：BIG 14回 (1/235.8) ｜ REG 9回 (単独9回・チェリー重複0回) ｜ <b>ブドウ確率 1/5.53 (597回)</b> ｜ 非重複チェリー 1/32.05 (103回)<br>
+              ・<b>収支結果</b>：総投資 26k (1,196枚) ➡ 獲得 <b>2,862枚（差枚 +1,666枚）</b> まくり快勝！
+            </div>
+            
+            <!-- トータル合算結果 -->
+            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:3px; padding:6px 8px; font-size:11.5px; font-weight:700;">
+              📊 【前任＋ガリぞう 終日トータル】 総回転数：<b>8,036G</b> ｜ BIG：<b>28回 (1/287.0)</b> ｜ REG：<b>36回 (1/223.2)</b> ｜ 合算：<b>1/125.5</b>（設定6公表値 1/114.6〜1/126.8レンジ完全合致）
+            </div>
+          </div>
+
+          <!-- 実戦事例2: 収支日記#174 / プロスロ13 -->
+          <div style="background: #ffffff; border: 1.5px solid #141414; border-radius: 4px; padding: 10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <b style="font-size:13px; color:#15803d;">CASE 2：序盤地獄（1/194）から根拠を信じて逆転勝利【収支日記#174 / プロスロ13】</b>
+              <span class="card-tag tag-green">終日+1,607枚逆転</span>
+            </div>
+            <div style="font-size: 12px; line-height: 1.6; color: #141414; margin-bottom: 8px;">
+              ・<b>実戦概要</b>：過去30回以上の収録実績から「円形シマ平均PAYOUT 105%超」と分かっているホールのマイジャグV円形シマA番台を確保。<br>
+              ・<b>絶望の序盤</b>：1,941G消化時点で BIG: 5回 / REG: 5回（合算 1/194.1、投資16,000円・736枚）。目先は設定1以下の数値。<br>
+              ・<b>最終結果</b>：約9,000G回して <b>投資 736枚 ➡ 回収 2,343枚（差枚 +1,607枚）</b>！
+            </div>
+
+            <!-- 収支日記#174 序盤実戦履歴テーブル -->
+            <div style="font-size:11.5px; font-weight:800; color:#b45309; margin:6px 0 2px;">
+              📝 【収支日記#174 掲載】マイジャグラーV A番台 序盤実戦履歴ログ
+            </div>
+            <div class="table-responsive" style="margin:4px 0 8px;">
+              <table style="font-size:11px;">
+                <thead>
+                  <tr style="background:#f1f5f9;">
+                    <th>G数</th>
+                    <th>当選役</th>
+                    <th>契機・備考</th>
+                    <th>投資・出玉状況</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>31G</td><td><b style="color:#2563eb;">REG</b></td><td>単独</td><td>投資 46枚</td></tr>
+                  <tr><td>111G</td><td><b style="color:#2563eb;">REG</b></td><td>単独</td><td>追加 46枚（累計92枚）</td></tr>
+                  <tr><td>275G</td><td><b style="color:#dc2626;">BIG</b></td><td>チェリー重複（※）</td><td>追加 184枚（累計276枚）</td></tr>
+                  <tr><td>515G</td><td><b style="color:#2563eb;">REG</b></td><td>単独</td><td>追加 276枚（累計552枚）</td></tr>
+                  <tr><td>25G</td><td><b style="color:#dc2626;">BIG</b></td><td>チェリー重複（※）</td><td>持ちメダル</td></tr>
+                  <tr><td>47G</td><td><b style="color:#dc2626;">BIG</b></td><td>単独</td><td>持ちメダル</td></tr>
+                  <tr><td>365G</td><td><b style="color:#dc2626;">BIG</b></td><td>単独</td><td>持ちメダル</td></tr>
+                  <tr><td>281G</td><td><b style="color:#dc2626;">BIG</b></td><td>単独</td><td>追加 138枚（累計690枚）</td></tr>
+                  <tr><td>5G</td><td><b style="color:#2563eb;">REG</b></td><td>チェリー重複（※）</td><td>持ちメダル</td></tr>
+                  <tr><td>286G</td><td><b style="color:#2563eb;">REG</b></td><td>チェリー重複（※）</td><td>追加 46枚（累計736枚・総投資16k）</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="background:#fef2f2; border-left:3px solid #dc2626; padding:6px 8px; font-size:11px; line-height:1.5;">
+              ⚠️ <b>1,941G時点の数値</b>：BIG 5回 (1/388.2) ｜ REG 5回 (1/388.2) ｜ 合算 1/194.1 ｜ 投資 16k<br>
+              ➡ ここからホールの過去実績（円形シマ平均PAYOUT105%超）の根拠を信じてブン回し、約9,000Gで<b>回収2,343枚（+1,607枚）</b>へ大逆転。
+            </div>
+          </div>
+
+          <div style="font-size: 11px; color: #555555; text-align: right; margin-top: 6px;">
+            出典：ななプレス連載『ガリぞうの収支日記』第174回・第178回／YouTube『プロスロ13』
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ3: SジャグラーガールズSS (NEW!) -->
+    <!-- ============================================================== -->
+    <section id="tab-girls" class="tab-pane">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🎀 SジャグラーガールズSS（2024年登場 最新6号機）</div>
+          <span class="card-tag tag-pink">告知音ガコッの元祖</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：ガールズSS設定看破の要諦】</b><br>
+          ・<b>後告知＆大音量「ガコッ」告知音の元祖！</b> BIG確率が設定1でも1/273.1、設定6で1/240.9と軽快。<br>
+          ・<b>ブドウ確率はアイム型！設定1〜4が同一（約1/5.98）、設定5で1/5.88、設定6で1/5.83と上位で優遇。</b><br>
+          ・8,000Gでのブドウ差は約34回程度と小さいため、ブドウ単体での過信は厳禁！**単独REG（1/523 ➡ 1/358）とBIG合算**を複合して判断するのがガリぞう流。
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／最新6号機実戦シミュレート値 ガールズSS編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(完全技術介入)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/273.1</td><td>1/381.0</td><td>1/159.1</td><td>97.0%</td><td>98.09%</td><td>98.78%</td><td>約 40.0G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/270.8</td><td>1/356.2</td><td>1/152.4</td><td>97.9%</td><td>99.02%</td><td>99.71%</td><td>約 40.2G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/264.3</td><td>1/327.7</td><td>1/144.4</td><td>99.9%</td><td>101.09%</td><td>101.77%</td><td>約 40.5G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/253.0</td><td>1/292.6</td><td>1/135.4</td><td>102.1%</td><td><b class="val-gold">103.42%</b></td><td>104.10%</td><td>約 40.8G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/247.4</td><td>1/270.8</td><td>1/129.3</td><td>104.0%</td><td><b class="val-green">105.32%</b></td><td>106.00%</td><td>約 41.2G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/240.9</b></td><td><b class="val-best">1/252.1</b></td><td><b class="val-best">1/123.0</b></td><td>107.5%</td><td><b class="val-best">108.84%</b></td><td><b class="val-best">109.52%</b></td><td><b class="val-best">約 41.6G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ）</div>
+          <span class="card-tag tag-pink">設定5・6で微差優遇</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ブドウ確率の特性】</b><br>
+          設定1〜4まで同一（1/5.98）、設定5で1/5.88、設定6で1/5.83。8,000Gでの差は約34回程度と控えめなため、ブドウが少し悪いからと即捨てするのは危険。REG確率と合算が良好なら腰を据えて追うべきスペックです。
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう逆算値)</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>設定6との成立回数差</th>
+                <th>ブドウ信頼度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 5.98</td><td>167.2 回</td><td>501.7 回</td><td>1,337.8 回</td><td>-34.4 回</td><td>過信厳禁</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 5.98</td><td>167.2 回</td><td>501.7 回</td><td>1,337.8 回</td><td>-34.4 回</td><td>過信厳禁</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 5.98</td><td>167.2 回</td><td>501.7 回</td><td>1,337.8 回</td><td>-34.4 回</td><td>過信厳禁</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 5.98</td><td>167.2 回</td><td>501.7 回</td><td>1,337.8 回</td><td>-34.4 回</td><td>過信厳禁</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 5.88</b></td><td>170.1 回</td><td>510.2 回</td><td>1,360.5 回</td><td>-11.7 回</td><td>設定5優遇</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.83</b></td><td><b class="val-best">171.5 回</b></td><td><b class="val-best">514.6 回</b></td><td><b class="val-best">1,372.2 回</b></td><td><b class="val-best">基準 (+34.4回)</b></td><td><b>設定6優遇域</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（チェリー・ベル・ピエロ別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（チェリー・ベル・ピエロ）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>非重複チェリー確率</th><th>重複チェリー確率</th><th>ベル確率</th><th>ピエロ確率</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 33.56</td><td>1 / 546.1</td><td>1 / 1024</td><td>1 / 1024</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 33.47</td><td>1 / 528.5</td><td>1 / 1024</td><td>1 / 1024</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 33.32</td><td>1 / 512.0</td><td>1 / 1024</td><td>1 / 1024</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 33.15</td><td>1 / 481.9</td><td>1 / 1024</td><td>1 / 1024</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1 / 33.10</td><td>1 / 455.1</td><td>1 / 1024</td><td>1 / 1024</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 32.97</b></td><td><b class="val-best">1 / 431.2</b></td><td>1 / 1024</td><td>1 / 1024</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（単独REG・単独BIG） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（単独ボーナス ＆ チェリー重複）</div>
+          <span class="card-tag tag-gold">単独REG 1/358</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          ガールズSSは単独REGが設定1の1/523.8から設定6の1/358.9まで綺麗な差が存在。さらに単独BIGも1/389 ➡ 1/313と優秀です。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率</th><th>チェリー重複REG</th><th>単独BIG確率</th><th>チェリー重複BIG</th><th>合算REG</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 523.8</td><td>1 / 1394.4</td><td>1 / 389.5</td><td>1 / 910.2</td><td>1 / 381.0</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 485.3</td><td>1 / 1336.5</td><td>1 / 383.1</td><td>1 / 897.8</td><td>1 / 356.2</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 440.1</td><td>1 / 1285.0</td><td>1 / 371.5</td><td>1 / 873.8</td><td>1 / 327.7</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 399.2</td><td>1 / 1213.6</td><td>1 / 352.4</td><td>1 / 851.1</td><td>1 / 292.6</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 385.2</b></td><td><b class="val-green">1 / 1149.8</b></td><td>1 / 340.0</td><td>1 / 829.6</td><td><b class="val-green">1 / 270.8</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 358.9</b></td><td><b class="val-best">1 / 1057.0</b></td><td><b class="val-best">1 / 313.7</b></td><td><b class="val-best">1 / 799.2</b></td><td><b class="val-best">1 / 252.1</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 実践データ記録スロット（準備中枠） -->
+        <div class="placeholder-card">
+          <div class="placeholder-title">📊 【ガールズSS】実践データ・動画検証ログ（記録枠）</div>
+          <div class="placeholder-desc">
+            ※ユーザー様の実践データ、ホールスランプグラフ検証、ガリぞう氏・いそまる氏・チェリ男氏らの実践履歴データを後からスムーズに追加・管理できる専用スペースです。
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ4: SハッピージャグラーVⅢ -->
+    <!-- ============================================================== -->
+    <section id="tab-happy" class="tab-pane">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍀 SハッピージャグラーVⅢ（V3） 6号機</div>
+          <span class="card-tag tag-green">小役優先制御＆高重複</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：ハッピー設定看破の真髄】</b><br>
+          ・<b>シリーズ唯一の「小役優先制御」！</b> ボーナス成立後も小役が揃い、チェリー重複率はシリーズ最高。<br>
+          ・<b>「チェリー重複REG」に1/1057.03 ➡ 1/642.51（約1.65倍）の超強力な設定差！</b><br>
+          ・ブドウ確率も段階的に1/6.04 ➡ 1/5.79と向上。ベル・ピエロの確率も他機種の1/1024より軽い<b>約1/655.4</b>で設定看破＆機械割奪取に貢献！
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／プロスロ実践検証 ハッピーV3編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(完全技術介入)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/273.1</td><td>1/397.2</td><td>1/161.8</td><td>97.0%</td><td>97.90%</td><td>98.78%</td><td>約 40.5G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/270.8</td><td>1/362.1</td><td>1/154.9</td><td>98.1%</td><td>99.15%</td><td>100.03%</td><td>約 40.8G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/263.2</td><td>1/331.0</td><td>1/146.6</td><td>99.9%</td><td>101.00%</td><td>101.89%</td><td>約 41.0G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/254.0</td><td>1/290.0</td><td>1/135.4</td><td>102.9%</td><td><b class="val-gold">104.20%</b></td><td>105.08%</td><td>約 41.5G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/239.2</td><td>1/273.1</td><td>1/127.5</td><td>105.8%</td><td><b class="val-green">107.45%</b></td><td>108.33%</td><td>約 41.8G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/226.0</b></td><td><b class="val-best">1/256.0</b></td><td><b class="val-best">1/120.0</b></td><td>108.4%</td><td><b class="val-best">110.34%</b></td><td><b class="val-best">111.22%</b></td><td><b class="val-best">約 42.2G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ）</div>
+          <span class="card-tag tag-purple">段階的推移</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ブドウ確率の特性】</b><br>
+          設定1（1/6.04）から設定6（1/5.79）へ段階的にステップアップ。高設定域（設定4以上）で1/5.84以下となり、8,000Gで約57回差が生じます。
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう調べ)</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>設定6との成立回数差</th>
+                <th>ブドウ信頼度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 6.04</td><td>165.6 回</td><td>496.7 回</td><td>1,324.5 回</td><td>-57.2 回</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 6.01</td><td>166.4 回</td><td>499.2 回</td><td>1,331.1 回</td><td>-50.6 回</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 5.98</td><td>167.2 回</td><td>501.7 回</td><td>1,337.8 回</td><td>-43.9 回</td><td>中間設定</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 5.84</td><td>171.2 回</td><td>513.7 回</td><td>1,369.9 回</td><td>-11.8 回</td><td>高設定挙動</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1 / 5.81</td><td>172.1 回</td><td>516.4 回</td><td>1,376.9 回</td><td>-4.8 回</td><td>高設定域</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.79</b></td><td><b class="val-best">172.7 回</b></td><td><b class="val-best">518.1 回</b></td><td><b class="val-best">1,381.7 回</b></td><td><b class="val-best">基準 (+57.2回)</b></td><td><b>信頼度高</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（チェリー・ベル・ピエロ別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（チェリー・ベル・ピエロ）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>チェリー確率</th><th>ベル確率 (他機種より優遇)</th><th>ピエロ確率 (他機種より優遇)</th><th>技術介入メモ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">全設定共通</td><td><b>1 / 35.2</b></td><td><b>1 / 655.4</b></td><td><b>1 / 655.4</b></td><td>ベル・ピエロ出現率が他機種の1/1024より圧倒的に軽い！逆挟み打ちフル攻略の効果が絶大</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（単独・チェリー重複） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（単独ボーナス ＆ チェリー重複REG）</div>
+          <span class="card-tag tag-red">チェリーREG要注目</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          ハッピーの最大の見どころは「チェリー重複REG」。単独REGだけでなくチェリー重複REGもカウントすることで高設定への確信度が倍増します。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率</th><th>チェリー重複REG<br>(設定差特大！)</th><th>単独BIG確率</th><th>チェリー重複BIG</th><th>看破ポイント</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 636.27</td><td>1 / 1057.03</td><td>1 / 436.9</td><td>1 / 1489.5</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 569.88</td><td>1 / 992.97</td><td>1 / 431.2</td><td>1 / 1489.5</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 532.81</td><td>1 / 885.62</td><td>1 / 412.2</td><td>1 / 1489.5</td><td>中間設定</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 478.36</td><td><b class="val-gold">1 / 809.09</b></td><td>1 / 414.8</td><td>1 / 1213.6</td><td>好挙動</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 436.91</b></td><td><b class="val-green">1 / 728.18</b></td><td>1 / 376.6</td><td>1 / 1213.6</td><td><b>高設定域！</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 425.56</b></td><td><b class="val-best">1 / 642.51</b></td><td><b class="val-best">1 / 344.9</b></td><td><b class="val-best">1 / 1213.6</b></td><td><b>★文句なし本命</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 実践データ記録スロット（準備中枠） -->
+        <div class="placeholder-card">
+          <div class="placeholder-title">📊 【ハッピージャグラーVⅢ】実践データ・動画検証ログ（記録枠）</div>
+          <div class="placeholder-desc">
+            ※ユーザー様の実践データ、ホールスランプグラフ検証、ガリぞう氏・いそまる氏・チェリ男氏らの実践履歴データを後からスムーズに追加・管理できる専用スペースです。
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ5: Sウルトラミラクルジャグラー -->
+    <!-- ============================================================== -->
+    <section id="tab-miracle" class="tab-pane">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🚀 Sウルトラミラクルジャグラー 6号機</div>
+          <span class="card-tag tag-blue">BIG偏向＆一撃瞬発力</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：ウルトラミラクル設定看破の勘所】</b><br>
+          ・<b>全ジャグラー中No.1のBIG確率（設定6で1/217.0）！</b> 一撃でドル箱を積み上げる荒波タイプ。<br>
+          ・<b>REG確率が設定6でも1/319.6と重め。</b> REG確率だけに捉われると高設定を見失う典型機種！<br>
+          ・<b>単独REG（設定1: 1/595.84 ➡ 設定6: 1/379.91）とBIG初当たりの軽さを合算</b>して判断するのがガリぞう流。
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／最新ミラクル検証編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率<br>(超高確率！)</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(完全技術介入)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/264.3</td><td>1/422.8</td><td>1/162.6</td><td>97.0%</td><td>98.1%</td><td>98.8%</td><td>約 40.2G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/260.1</td><td>1/399.6</td><td>1/157.5</td><td>98.1%</td><td>99.2%</td><td>99.9%</td><td>約 40.5G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/253.0</td><td>1/366.1</td><td>1/149.6</td><td>99.8%</td><td>100.9%</td><td>101.7%</td><td>約 40.8G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/237.4</td><td>1/334.4</td><td>1/138.8</td><td>102.1%</td><td><b class="val-gold">103.3%</b></td><td>104.0%</td><td>約 41.2G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/227.6</td><td>1/321.4</td><td>1/133.2</td><td>104.5%</td><td><b class="val-green">105.7%</b></td><td>106.5%</td><td>約 41.5G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/217.0</b></td><td><b class="val-best">1/319.6</b></td><td><b class="val-best">1/129.0</b></td><td>108.1%</td><td><b class="val-best">109.4%</b></td><td><b class="val-best">110.1%</b></td><td><b class="val-best">約 42.0G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ）</div>
+          <span class="card-tag tag-purple">設定5・6で微差優遇</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ブドウ確率の特性】</b><br>
+          設定1〜4は1/5.93、設定5で1/5.87、設定6で1/5.81と高設定ほど優遇されますが、設定差自体は小さいため、ブドウ単体での即見切りは厳禁。
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう調べ)</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>設定6との成立回数差</th>
+                <th>判別スタンス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 5.93</td><td>168.6 回</td><td>505.9 回</td><td>1,349.1 回</td><td>-27.8 回</td><td>過信厳禁</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 5.93</td><td>168.6 回</td><td>505.9 回</td><td>1,349.1 回</td><td>-27.8 回</td><td>過信厳禁</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 5.93</td><td>168.6 回</td><td>505.9 回</td><td>1,349.1 回</td><td>-27.8 回</td><td>過信厳禁</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 5.93</td><td>168.6 回</td><td>505.9 回</td><td>1,349.1 回</td><td>-27.8 回</td><td>過信厳禁</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 5.87</b></td><td>170.4 回</td><td>511.1 回</td><td>1,362.9 回</td><td>-14.0 回</td><td>設定5優遇</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.81</b></td><td><b class="val-best">172.1 回</b></td><td><b class="val-best">516.4 回</b></td><td><b class="val-best">1,376.9 回</b></td><td><b class="val-best">基準 (+27.8回)</b></td><td><b>設定6優遇域</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（チェリー・ベル・ピエロ別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（チェリー・ベル・ピエロ）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>非重複チェリー確率</th><th>ベル確率</th><th>ピエロ確率</th><th>備考</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 37.22</td><td>1 / 1024</td><td>1 / 1024</td><td>チェリー確率にも微小な設定差あり</td></tr>
+              <tr><td class="col-setting">設定2〜4</td><td>1 / 37.09</td><td>1 / 1024</td><td>1 / 1024</td><td>微差</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1 / 36.16</td><td>1 / 1024</td><td>1 / 1024</td><td>高設定域</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 35.48</b></td><td>1 / 1024</td><td>1 / 1024</td><td>チェリー出現率も良好</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（単独ボーナス） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（単独REG ＆ 単独BIG）</div>
+          <span class="card-tag tag-gold">単独REGが指標</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          ミラクルはBIG偏向機のため、単独BIG自体の軽さ（1/333 ➡ 1/281）に加え、単独REG（1/595 ➡ 1/379）の引きが重要です。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率</th><th>単独BIG確率</th><th>チェリー重複REG</th><th>チェリー重複BIG</th><th>判別難易度</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 595.84</td><td>1 / 333.65</td><td>1 / 1456.4</td><td>1 / 1310.7</td><td>荒波・波荒い</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 545.71</td><td>1 / 333.32</td><td>1 / 1456.4</td><td>1 / 1260.3</td><td>荒波</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 489.59</td><td>1 / 328.76</td><td>1 / 1424.7</td><td>1 / 1213.6</td><td>中間</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 436.46</td><td>1 / 310.66</td><td>1 / 1365.3</td><td>1 / 1170.3</td><td>手応えあり</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 415.90</b></td><td><b class="val-green">1 / 304.33</b></td><td>1 / 1260.3</td><td>1 / 1129.9</td><td><b>高設定域！</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 379.91</b></td><td><b class="val-best">1 / 281.78</b></td><td><b class="val-best">1 / 1057.0</b></td><td><b class="val-best">1 / 1092.3</b></td><td><b>★BIG連打無双</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 実践データ記録スロット（準備中枠） -->
+        <div class="placeholder-card">
+          <div class="placeholder-title">📊 【ウルトラミラクル】実践データ・動画検証ログ（記録枠）</div>
+          <div class="placeholder-desc">
+            ※ユーザー様の実践データ、ホールスランプグラフ検証、ガリぞう氏・いそまる氏・チェリ男氏らの実践履歴データを後からスムーズに追加・管理できる専用スペースです。
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ6: Sミスタージャグラー -->
+    <!-- ============================================================== -->
+    <section id="tab-mr" class="tab-pane">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🎩 Sミスタージャグラー（2024年登場 最新6号機）</div>
+          <span class="card-tag tag-purple">みんなのジャグラー後継</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：ミスタージャグラー看破の決定打】</b><br>
+          ・<b>ブドウ設定差が8,000Gで約70.4回差と、ジャグラー全シリーズ中最大級！</b><br>
+          ・<b>ピエロ重複ボーナス（出現率約1/420、重複率約25%）を搭載！</b><br>
+          ・完全フル攻略時の機械割は設定1で<b>99.50%</b>、設定6で<b>109.89%</b>と非常に甘く、技術介入とカウントが直結する玄人好みの名機！
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／最新6号機実戦分析 ミスター編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(ピエロ・ベル完全奪取)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/268.6</td><td>1/374.5</td><td>1/156.4</td><td>97.0%</td><td>98.09%</td><td><b class="val-green">99.50%</b></td><td>約 35.5G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/267.5</td><td>1/354.3</td><td>1/152.4</td><td>98.0%</td><td>99.11%</td><td><b class="val-green">100.52%</b></td><td>約 35.8G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/260.1</td><td>1/331.0</td><td>1/145.6</td><td>99.8%</td><td>100.96%</td><td>102.37%</td><td>約 36.1G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/249.2</td><td>1/291.3</td><td>1/134.3</td><td>102.7%</td><td><b class="val-gold">103.84%</b></td><td>105.24%</td><td>約 36.5G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/240.9</td><td>1/257.0</td><td>1/124.4</td><td>105.5%</td><td><b class="val-green">106.69%</b></td><td>108.09%</td><td>約 36.9G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/237.5</b></td><td><b class="val-best">1/237.5</b></td><td><b class="val-best">1/118.9</b></td><td>107.3%</td><td><b class="val-best">108.49%</b></td><td><b class="val-best">109.89%</b></td><td><b class="val-best">約 37.3G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ：シリーズ最大級格差！）</div>
+          <span class="card-tag tag-red">8000Gで約70回差</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ミスターのブドウは最強の判別要素】</b><br>
+          設定1（1/6.29）から設定6（1/5.96）までハッキリとした差が付けられており、ガリぞう氏も「逆算シミュレータの信頼度が最も高い機種の一つ」と激賞。カチカチ君でのカウントは絶対必須！
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう調べ)</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>設定1との成立回数差</th>
+                <th>判別重要度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 6.29</td><td>159.0 回</td><td>477.0 回</td><td>1,271.9 回</td><td>基準</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 6.22</td><td>160.8 回</td><td>482.3 回</td><td>1,286.2 回</td><td>+14.3 回</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 6.15</td><td>162.6 回</td><td>487.8 回</td><td>1,300.8 回</td><td>+28.9 回</td><td>中間設定</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 6.09</td><td>164.2 回</td><td>492.6 回</td><td>1,313.6 回</td><td>+41.7 回</td><td>勝負ライン</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 6.02</b></td><td>166.1 回</td><td>498.3 回</td><td>1,328.9 回</td><td>+57.0 回</td><td>高設定域</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.96</b></td><td><b class="val-best">167.8 回</b></td><td><b class="val-best">503.4 回</b></td><td><b class="val-best">1,342.3 回</b></td><td><b class="val-best">+70.4 回！</b></td><td><b>★超高精度看破</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（ピエロ・チェリー・ベル別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（ピエロ・チェリー・ベル）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>役名</th><th>確率</th><th>ボーナス重複期待度</th><th>打ち方・技術介入</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>ピエロ</b></td><td><b>約 1 / 420.1</b></td><td><b class="val-best">約 25.0%</b></td><td>ピエロ成立時の4回に1回がペカる！左リール枠上ピエロ狙い等で完全奪取可能</td></tr>
+              <tr><td><b>チェリー</b></td><td>1 / 37.24</td><td>約 5.0%</td><td>通常時はチェリー狙い必須</td></tr>
+              <tr><td><b>ベル</b></td><td>1 / 1024.0</td><td>非重複</td><td>フル攻略時に狙い分け</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（ピエロ重複・単独REG） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（ピエロ重複・単独REG・特殊役）</div>
+          <span class="card-tag tag-gold">ピエロ重複25%</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          ミスタージャグラーはピエロ同時当選（期待度約25%）を搭載。さらに単独REGも1/374.5 ➡ 1/237.5と強烈な設定差があります。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率</th><th>チェリー重複REG</th><th>ピエロ重複ボーナス</th><th>単独BIG確率</th><th>中段チェリー</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 496.5</td><td>1 / 1524.1</td><td>約 1/1680 (重複率約25%)</td><td>1 / 402.1</td><td>1 / 6553.6</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 468.1</td><td>1 / 1456.4</td><td>約 1/1680 (重複率約25%)</td><td>1 / 399.6</td><td>1 / 6553.6</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 431.2</td><td>1 / 1424.7</td><td>約 1/1680 (重複率約25%)</td><td>1 / 385.5</td><td>1 / 6553.6</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 376.6</td><td>1 / 1285.0</td><td>約 1/1600 (重複率微優遇)</td><td>1 / 366.1</td><td>1 / 6553.6</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 331.0</b></td><td><b class="val-green">1 / 1129.9</b></td><td>約 1/1550 (重複率微優遇)</td><td>1 / 350.5</td><td>1 / 6553.6</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 309.1</b></td><td><b class="val-best">1 / 1024.0</b></td><td><b class="val-best">約 1/1500 (重複率微優遇)</b></td><td><b class="val-best">1 / 344.9</b></td><td>1 / 6553.6</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 実践データ記録スロット（準備中枠） -->
+        <div class="placeholder-card">
+          <div class="placeholder-title">📊 【ミスタージャグラー】実践データ・動画検証ログ（記録枠）</div>
+          <div class="placeholder-desc">
+            ※ユーザー様の実践データ、ホールスランプグラフ検証、ガリぞう氏・いそまる氏・チェリ男氏らの実践履歴データを後からスムーズに追加・管理できる専用スペースです。
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ7: Sゴーゴージャグラー3 -->
+    <!-- ============================================================== -->
+    <section id="tab-gogo" class="tab-pane">
+
+      <!-- 機種サマリーバナー -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">⚡ Sゴーゴージャグラー3 6号機</div>
+          <span class="card-tag tag-red">完全後告知＆超高合算</span>
+        </div>
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ガリぞう視点：ゴージャグ3看破のポイント】</b><br>
+          ・<b>設定6の合算確率は驚異の1/117.4！</b> 豆電球風の後告知オンリーでペカりまくる。<br>
+          ・<b>ブドウ設定差はミスターと並び最大級（8,000Gで約71.3回差）！</b><br>
+          ・ベースが約34Gとコイン持ちが低い分、高設定のブドウ軽さ（1/5.92）がそのまま出玉と持ちコインに直結！
+          <span class="source-credit">【出典・根拠】ナナプレス連載『ガリぞうのジャグラー雑感』／公式ブログ『徒然日記』ゴージャグ3編</span>
+        </div>
+
+        <!-- ボーナス確率＆機械割テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📊 ① ボーナス確率 ＆ 機械割（打ち方別完全マトリックス）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%;">設定</th>
+                <th>BIG確率</th>
+                <th>REG確率</th>
+                <th>合算確率</th>
+                <th>メーカー公表値</th>
+                <th>チェリー狙い割<br><span style="font-size:10px; font-weight:normal;">(ガリぞう算出)</span></th>
+                <th>フル攻略割<br><span style="font-size:10px; font-weight:normal;">(完全技術介入)</span></th>
+                <th>50枚ベース</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1/259.0</td><td>1/354.2</td><td>1/149.6</td><td>97.2%</td><td>98.39%</td><td>99.08%</td><td>約 34.0G</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1/258.0</td><td>1/332.7</td><td>1/145.3</td><td>98.2%</td><td>99.36%</td><td>100.05%</td><td>約 34.2G</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1/257.0</td><td>1/306.2</td><td>1/139.7</td><td>99.4%</td><td>100.60%</td><td>101.29%</td><td>約 34.5G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1/254.0</td><td>1/268.6</td><td>1/130.5</td><td>101.6%</td><td><b class="val-gold">102.83%</b></td><td>103.51%</td><td>約 34.9G</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1/247.4</td><td>1/247.4</td><td>1/123.7</td><td>103.8%</td><td><b class="val-green">105.08%</b></td><td>105.76%</td><td>約 35.3G</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1/234.9</b></td><td><b class="val-best">1/234.9</b></td><td><b class="val-best">1/117.4</b></td><td>106.5%</td><td><b class="val-best">107.83%</b></td><td><b class="val-best">108.51%</b></td><td><b class="val-best">約 35.8G</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② ブドウ確率専用テーブル（1000G・3000G・8000G目安） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍇 ② ブドウ確率 ＆ G数別成立回数目安（ガリぞう調べ：8000Gで約71回差！）</div>
+          <span class="card-tag tag-red">ブドウ確率最重要</span>
+        </div>
+        <div class="banner-box banner-info">
+          <b>【ゴージャグ3のブドウ推移】</b><br>
+          設定1（1/6.25）から設定6（1/5.92）まで段差が非常にハッキリしています。設定6の目安は<b>1/6.00未満</b>。単独REGとブドウの軽さが揃えば低設定の可能性は激減します。
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>ブドウ確率<br>(ガリぞう調べ)</th>
+                <th>1,000G 目安</th>
+                <th>3,000G 目安</th>
+                <th>8,000G 目安</th>
+                <th>設定1との成立回数差</th>
+                <th>判別重要度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 6.25</td><td>160.0 回</td><td>480.0 回</td><td>1,280.0 回</td><td>基準</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 6.20</td><td>161.3 回</td><td>483.9 回</td><td>1,290.3 回</td><td>+10.3 回</td><td>低設定域</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 6.15</td><td>162.6 回</td><td>487.8 回</td><td>1,300.8 回</td><td>+20.8 回</td><td>中間設定</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 6.07</td><td>164.7 回</td><td>494.2 回</td><td>1,318.0 回</td><td>+38.0 回</td><td>勝負ライン</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 6.00</b></td><td>166.7 回</td><td>500.0 回</td><td>1,333.3 回</td><td>+53.3 回</td><td>高設定域</td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 5.92</b></td><td><b class="val-best">168.9 回</b></td><td><b class="val-best">506.8 回</b></td><td><b class="val-best">1,351.4 回</b></td><td><b class="val-best">+71.4 回！</b></td><td><b>★超高精度看破</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 小役確率（チェリー・ベル・ピエロ別表） -->
+        <div style="font-size:12px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          🍒 その他の小役確率（チェリー・ベル・ピエロ）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>チェリー確率</th><th>ベル確率</th><th>ピエロ確率</th><th>備考</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">全設定共通</td><td><b>1 / 36.4</b></td><td>1 / 1024.0</td><td>1 / 1024.0</td><td>チェリー狙いはBAR目安。ゴージャグは先告知がなく完全後告知仕様</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- それ以外で設定差があるモノ（単独REG・チェリー重複） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔍 ③ それ以外で設定差があるモノ（単独REG ＆ チェリー重複REG）</div>
+          <span class="card-tag tag-gold">単独REG 1/313</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          REGは単独REG（1/468 ➡ 1/313）とチェリー重複REG（1/1456 ➡ 1/936）の双方に大きな設定差がついています。
+        </p>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>単独REG確率</th><th>チェリー重複REG</th><th>単独BIG確率</th><th>チェリー重複BIG</th><th>合算REG</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 468.1</td><td>1 / 1456.4</td><td>1 / 394.8</td><td>1 / 762.0</td><td>1 / 354.2</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 445.8</td><td>1 / 1310.7</td><td>1 / 392.4</td><td>1 / 753.1</td><td>1 / 332.7</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 412.2</td><td>1 / 1191.6</td><td>1 / 385.5</td><td>1 / 744.7</td><td>1 / 306.2</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 356.2</td><td>1 / 1092.3</td><td>1 / 372.4</td><td>1 / 736.4</td><td>1 / 268.6</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td><b class="val-green">1 / 327.7</b></td><td><b class="val-green">1 / 1008.2</b></td><td>1 / 356.2</td><td>1 / 728.2</td><td><b class="val-green">1 / 247.4</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 313.6</b></td><td><b class="val-best">1 / 936.2</b></td><td><b class="val-best">1 / 344.9</b></td><td>1 / 728.2</td><td><b class="val-best">1 / 234.9</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 実践データ記録スロット（準備中枠） -->
+        <div class="placeholder-card">
+          <div class="placeholder-title">📊 【ゴーゴージャグラー3】実践データ・動画検証ログ（記録枠）</div>
+          <div class="placeholder-desc">
+            ※ユーザー様の実践データ、ホールスランプグラフ検証、ガリぞう氏・いそまる氏・チェリ男氏らの実践履歴データを後からスムーズに追加・管理できる専用スペースです。
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ8: 7機種スペック徹底比較＆ガリぞう流ランキング -->
+    <!-- ============================================================== -->
+    <section id="tab-compare" class="tab-pane">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">⚖️ 対象7機種 設定6スペック ＆ 看破難易度マトリックス</div>
+          <span class="card-tag tag-red">横断比較</span>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>機種名</th>
+                <th>設定6機械割<br>(チェリー狙い)</th>
+                <th>設定6機械割<br>(フル攻略)</th>
+                <th>設定6合算</th>
+                <th>ブドウ設定差<br>(8000G回数差)</th>
+                <th>単独REG設定差<br>(設定1 ➔ 設定6)</th>
+                <th>ガリぞう視点<br>判別難易度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="row-highlight">
+                <td><b>マイジャグラーV</b></td>
+                <td><b class="text-red">110.45%</b></td>
+                <td><b class="val-best">112.44%</b></td>
+                <td><b class="val-best">1/114.6</b></td>
+                <td>中（約26回差）</td>
+                <td><b class="text-red">2.00倍差 (最優秀)</b></td>
+                <td>★☆☆ (判別容易)</td>
+              </tr>
+              <tr>
+                <td><b>ハッピージャグラーVⅢ</b></td>
+                <td><b class="val-gold">110.34%</b></td>
+                <td><b class="val-gold">111.22%</b></td>
+                <td>1/120.0</td>
+                <td>中（約57回差）</td>
+                <td>1.49倍差 (チェリーREG大)</td>
+                <td>★★☆ (総合判断)</td>
+              </tr>
+              <tr>
+                <td><b>ウルトラミラクル</b></td>
+                <td>109.4%</td>
+                <td>110.1%</td>
+                <td>1/129.0</td>
+                <td>小（約27回差）</td>
+                <td>1.57倍差</td>
+                <td>★★★ (BIG偏向型)</td>
+              </tr>
+              <tr class="row-highlight">
+                <td><b>ミスタージャグラー</b></td>
+                <td>108.49%</td>
+                <td><b class="val-green">109.89%</b></td>
+                <td>1/118.9</td>
+                <td><b class="text-red">特大（約70.4回差）</b></td>
+                <td>1.61倍差 (ピエロ重複有)</td>
+                <td>★☆☆ (ブドウで早期看破)</td>
+              </tr>
+              <tr>
+                <td><b>ガールズSS</b></td>
+                <td>108.84%</td>
+                <td>109.52%</td>
+                <td>1/123.0</td>
+                <td>小（約34回差）</td>
+                <td>1.46倍差</td>
+                <td>★★☆ (BIG＆REG合算)</td>
+              </tr>
+              <tr>
+                <td><b>ゴーゴージャグラー3</b></td>
+                <td>107.83%</td>
+                <td>108.51%</td>
+                <td><b class="val-best">1/117.4</b></td>
+                <td><b class="text-red">特大（約71.3回差）</b></td>
+                <td>1.49倍差</td>
+                <td>★☆☆ (ブドウで早期看破)</td>
+              </tr>
+              <tr>
+                <td><b>SアイムジャグラーEX</b></td>
+                <td>107.29%</td>
+                <td>108.01%</td>
+                <td>1/127.5</td>
+                <td>設定6のみ特化</td>
+                <td>1.73倍差 (5・6共通)</td>
+                <td>★★☆ (6のみ看破可)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="banner-box banner-gold" style="margin-top:10px;">
+          <b class="banner-box-title">【ガリぞう流：ホール立ち回りの優先順位】</b>
+          <ol style="padding-left:18px; margin-top:4px; line-height:1.7;">
+            <li><b>機械割重視なら「マイジャグラーV」一択！</b> フル攻略112.44%と他を圧倒。単独REGとブドウの合致で終日勝負。</li>
+            <li><b>後ヅモ・空き台狙いなら「ミスター」「ゴージャグ3」！</b> ブドウ確率の設定差が極めて大きいため、前任者の総回転数と差枚データからブドウ逆算シミュレータで高設定を高精度で炙り出し可能。</li>
+            <li><b>アイム＆ガールズは「REGだけ」「ブドウだけ」で追うな！</b> アイムは設定5でもREG1/255、ガールズはブドウ差が小さいため、総合要素で複合判断。</li>
+          </ol>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ9: 🧮 逆算シミュレータ＆AI設定判別支援 -->
+    <!-- ============================================================== -->
+    <section id="tab-calc" class="tab-pane">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🧮 ガリぞう流 ブドウ確率逆算シミュレータ</div>
+          <span class="card-tag tag-green">空き台・後ヅモ用</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          データカウンターの「総G数・BIG回数・REG回数」およびスランプグラフの「差枚数」から、前任者が打っていた間の<b>推定ブドウ確率</b>を逆算します。
+        </p>
+
+        <div class="calc-grid">
+          <div class="calc-input-box">
+            <div class="calc-label">対象機種</div>
+            <select id="calc_machine" class="calc-input" style="text-align:left;">
+              <option value="my">マイジャグラーV</option>
+              <option value="im">ネオアイムジャグラーEX</option>
+              <option value="girls">ジャグラーガールズSS</option>
+              <option value="happy">ハッピージャグラーVⅢ</option>
+              <option value="mr">ミスタージャグラー</option>
+              <option value="gogo">ゴーゴージャグラー3</option>
+              <option value="miracle">ウルトラミラクル</option>
+            </select>
+          </div>
+          <div class="calc-input-box">
+            <div class="calc-label">総回転数 (G)</div>
+            <input type="number" id="calc_totalG" class="calc-input" placeholder="例: 3500">
+          </div>
+          <div class="calc-input-box">
+            <div class="calc-label">BIG回数</div>
+            <input type="number" id="calc_big" class="calc-input" placeholder="例: 15">
+          </div>
+          <div class="calc-input-box">
+            <div class="calc-label">REG回数</div>
+            <input type="number" id="calc_reg" class="calc-input" placeholder="例: 14">
+          </div>
+          <div class="calc-input-box">
+            <div class="calc-label">差枚数 (枚)</div>
+            <input type="number" id="calc_diff" class="calc-input" placeholder="例: +1200">
+          </div>
+        </div>
+
+        <button type="button" class="action-btn" onclick="executeGrapeCalc()" style="margin-top:8px; width:100%; justify-content:center;">
+          🧮 推定ブドウ確率を逆算する
+        </button>
+
+        <div id="calc_result_box" class="banner-box banner-gold" style="display:none; margin-top:12px;">
+          <b class="banner-box-title">【逆算結果】</b><br>
+          ・推定ブドウ確率: <b id="res_grape" class="val-best" style="font-size:16px;">-</b><br>
+          ・BIG確率: <b id="res_big">-</b> ｜ REG確率: <b id="res_reg" class="text-red">-</b> ｜ 合算: <b id="res_total">-</b><br>
+          ・総合設定期待度判定: <b id="res_eval" class="val-gold" style="font-size:14px;">-</b>
+        </div>
+      </div>
+
+      <!-- AI相談プロンプト生成 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🤖 AI相談用プロンプトワンタップ生成</div>
+          <span class="card-tag tag-purple">Gemini / Claude / GPT対応</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          入力した実戦数値を元に、AI（Gemini/ChatGPT/Claude）に最適な「ジャグラー設定推測アドバイス依頼文」を自動生成します。
+        </p>
+
+        <button type="button" class="action-btn" onclick="generateAiJugglerPrompt()" style="margin-bottom:8px;">
+          📋 プロンプトを生成してコピー
+        </button>
+
+        <div id="copySuccessMsg" style="display:none; color:var(--accent-green); font-weight:800; font-size:12px; margin-bottom:4px;">
+          ✓ クリップボードにコピーしました！AIチャットへ貼り付けてください。
+        </div>
+
+        <textarea id="aiPromptArea" class="prompt-box" readonly placeholder="ここにAI用設定判別プロンプトが生成されます..."></textarea>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ボトム固定ナビゲーション（親指操作最適化） -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="switchNavTab('tab-im', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+      <span>アイム</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-my', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      <span>マイV</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-girls', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      <span>ガールズ</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-happy', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z"/></svg>
+      <span>ハッピー</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-miracle', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2.5l2.83 5.74 6.34.92-4.59 4.47 1.08 6.32L12 17l-5.66 2.95 1.08-6.32-4.59-4.47 6.34-.92L12 2.5z"/></svg>
+      <span>ミラクル</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-mr', this)">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      <span>ミスター</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-gogo', this)">
+      <svg viewBox="0 0 24 24"><path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.05.5-9 4.77-9 9.95 0 5.52 4.48 10 10 10 2.45 0 4.69-.89 6.43-2.36l-2.18-1.55C14.88 18.65 13.51 19 12 19z"/></svg>
+      <span>ゴージャグ</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-compare', this)">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+      <span>比較</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-calc', this)">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+      <span>逆算/AI</span>
+    </div>
+  </nav>
+
+  <!-- 構造化スクリプト -->
+  <script>
+    // タブ切り替え関数
+    function showTabById(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.subnav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabId);
+      });
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 上部サブナビクリック
+    document.querySelectorAll('.subnav-btn').forEach(btn => {
+      btn.onclick = () => showTabById(btn.dataset.tab);
+    });
+
+    // 下部ボトムナビクリック
+    function switchNavTab(tabId, el) {
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+      showTabById(tabId);
+    }
+
+    // インクリメンタル検索
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) {
+        document.querySelectorAll('.card').forEach(c => c.style.display = 'block');
+        return;
+      }
+      document.querySelectorAll('.card').forEach(card => {
+        if (card.textContent.toLowerCase().includes(q)) {
+          card.style.display = 'block';
+          card.closest('.tab-pane').classList.add('active');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // テーマ切り替え
+    function togglePortalTheme() {
+      const isConstruct = document.body.classList.toggle('theme-constructivist');
+      localStorage.setItem('juggler_theme', isConstruct ? 'constructivist' : 'dark');
+    }
+    (function initTheme() {
+      const saved = localStorage.getItem('juggler_theme');
+      if (saved === 'dark') {
+        document.body.classList.remove('theme-constructivist');
+      } else {
+        document.body.classList.add('theme-constructivist');
+      }
+    })();
+
+    // ガリぞう流 ブドウ確率逆算シミュレータ
+    function executeGrapeCalc() {
+      const g = Number(document.getElementById('calc_totalG').value);
+      const b = Number(document.getElementById('calc_big').value);
+      const r = Number(document.getElementById('calc_reg').value);
+      const diff = Number(document.getElementById('calc_diff').value);
+      const machine = document.getElementById('calc_machine').value;
+
+      if (!g || g < 100) {
+        alert("総回転数を正しく入力してください（100G以上）");
+        return;
+      }
+
+      // 6号機ジャグラーの獲得枚数定義 (BIG: 252枚, REG: 96枚)
+      const bigPay = 252;
+      const regPay = 96;
+      const totalBonusPay = (b * bigPay) + (r * regPay);
+      const totalIn = g * 3;
+      const totalOut = totalIn + diff;
+      
+      const replayCount = g / 7.298;
+      const replayPay = replayCount * 3;
+      const cherryPay = (g / 35.0) * 2;
+      
+      const grapePayApprox = totalOut - totalBonusPay - replayPay - cherryPay;
+      let grapeCount = grapePayApprox / 8;
+      if (grapeCount <= 0) grapeCount = 1;
+      
+      const grapeProb = (g / grapeCount).toFixed(2);
+
+      // 表示更新
+      const resBox = document.getElementById('calc_result_box');
+      resBox.style.display = 'block';
+      document.getElementById('res_grape').textContent = '1 / ' + grapeProb;
+      document.getElementById('res_big').textContent = b > 0 ? '1/' + (g / b).toFixed(1) : '-';
+      document.getElementById('res_reg').textContent = r > 0 ? '1/' + (g / r).toFixed(1) : '-';
+      document.getElementById('res_total').textContent = (b + r) > 0 ? '1/' + (g / (b + r)).toFixed(1) : '-';
+
+      // 評価判定
+      let evalText = '通常挙動';
+      const regProbVal = r > 0 ? g / r : 999;
+      const grapeNum = parseFloat(grapeProb);
+
+      if (machine === 'my') {
+        if (regProbVal <= 270 && grapeNum <= 5.80) {
+          evalText = '🔥 設定6濃厚・最優先続行レベル！ (単独REG・ブドウ両合致)';
+        } else if (regProbVal <= 310 || grapeNum <= 5.83) {
+          evalText = '⚡ 設定4・5以上期待度大 (続行推奨)';
+        } else {
+          evalText = '⚠️ 低設定濃厚または引き強の可能性 (慎重に見切り)';
+        }
+      } else if (machine === 'im') {
+        if (regProbVal <= 265 && grapeNum <= 5.82) {
+          evalText = '🔥 設定6濃厚！ (アイムでブドウ1/5.82以下は特権)';
+        } else if (regProbVal <= 270) {
+          evalText = '⚡ 設定5濃厚（ブドウから見て設定6の可能性は低め）';
+        } else {
+          evalText = '⚠️ 低設定域';
+        }
+      } else if (machine === 'girls') {
+        if (regProbVal <= 270 && grapeNum <= 5.85) {
+          evalText = '🔥 設定5・6濃厚！ (単独REG好調＆ブドウ軽快)';
+        } else if (regProbVal <= 310) {
+          evalText = '⚡ 設定4以上期待';
+        } else {
+          evalText = '⚠️ 低設定濃厚';
+        }
+      } else if (machine === 'gogo' || machine === 'mr') {
+        if (grapeNum <= 6.00 && regProbVal <= 270) {
+          evalText = '🔥 設定6濃厚！ (ブドウ設定差特大機種で1/6.00以下)';
+        } else if (grapeNum <= 6.10) {
+          evalText = '⚡ 設定4・5圏内';
+        } else {
+          evalText = '⚠️ 低設定濃厚';
+        }
+      } else {
+        if (regProbVal <= 280 && grapeNum <= 5.85) {
+          evalText = '🔥 高設定（設定5・6）濃厚！';
+        } else {
+          evalText = '⚡ 展開次第・要追加サンプル';
+        }
+      }
+      document.getElementById('res_eval').textContent = evalText;
+    }
+
+    // AI相談用プロンプト生成関数
+    function generateAiJugglerPrompt() {
+      const machine = document.getElementById('calc_machine').selectedOptions[0].text;
+      const g = document.getElementById('calc_totalG').value || '未入力';
+      const b = document.getElementById('calc_big').value || '未入力';
+      const r = document.getElementById('calc_reg').value || '未入力';
+      const diff = document.getElementById('calc_diff').value || '未入力';
+      const grape = document.getElementById('res_grape').textContent;
+
+      const promptText = `【ジャグラー設定推測・押し引き相談】
+■ 機種: ${machine}
+■ 総回転数: ${g} G
+■ BIG回数: ${b} 回 (${b > 0 && g !== '未入力' ? '1/' + (g/b).toFixed(1) : '-'})
+■ REG回数: ${r} 回 (${r > 0 && g !== '未入力' ? '1/' + (g/r).toFixed(1) : '-'})
+■ 差枚数: ${diff} 枚
+■ 逆算/実測ブドウ確率: ${grape}
+
+【質問事項】
+ガリぞう氏の解析調査値（単独REG確率、チェリー重複REG、ブドウ確率）に基づき、上記データから考えられる設定分布（設定1〜6の推定配分）と、現時点での「続行（Go!）かヤメ（Stop?）か」の押し引き判断を論理的に解説してください。`;
+
+      const area = document.getElementById('aiPromptArea');
+      area.value = promptText;
+
+      navigator.clipboard.writeText(promptText).then(() => {
+        const msg = document.getElementById('copySuccessMsg');
+        msg.style.display = 'block';
+        setTimeout(() => { msg.style.display = 'none'; }, 3500);
+      }).catch(() => {
+        area.select();
+      });
+    }
+  </script>
+</body>
+</html>

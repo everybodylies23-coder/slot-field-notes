@@ -1,7 +1,1278 @@
-<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#173b35"><meta name="apple-mobile-web-app-title" content="実戦ノート"><title>実戦ノート｜機種を選ぶ</title><style>
-:root{--ink:#173b35;--muted:#61746b;--paper:#f4f3ec;--gold:#d6ac65}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{background:var(--ink);color:white;border-bottom:5px solid var(--gold);padding:40px max(22px,calc((100vw - 920px)/2)) 32px}header small{color:var(--gold);letter-spacing:.16em;font-size:12px}h1{font-size:32px;line-height:1.3;margin:12px 0}header p{color:#d5e2db;font-size:14px;margin:0}main{max-width:964px;margin:auto;padding:26px 22px calc(32px + env(safe-area-inset-bottom))}.sectionline{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}h2{font-size:19px;margin:0}.sectionline span{font-size:12px;color:var(--muted)}.machines{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.machine{color:inherit;text-decoration:none;background:white;border:1px solid #d4ded5;border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:260px;box-shadow:0 5px 22px #173b3505;transition:transform .15s,border-color .15s}.machine:hover{transform:translateY(-2px);border-color:#578775}.machine:focus-visible{outline:3px solid #b45b32;outline-offset:4px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}.num{font-size:14px;color:#8c9a91;letter-spacing:.1em}.tag{background:#eaf0e9;color:#285c48;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}.machine h3{font-size:27px;margin:18px 0 0;line-height:1.4}.subtitle{color:var(--muted);font-size:12px;margin:2px 0 14px}.description{font-size:14px;margin:0 0 20px}.open{margin-top:auto;display:flex;justify-content:space-between;align-items:center;color:#155d4c;font-weight:700;border-top:1px solid #edf0e9;padding-top:14px}.open b{font-size:22px}.coming{display:flex;align-items:center;gap:14px;border:1px dashed #b9c9bd;padding:18px 20px;border-radius:14px;margin-top:18px;color:var(--muted)}.coming b{font-size:26px;font-weight:400}.coming strong{font-size:14px;color:var(--ink)}.coming p{font-size:12px;margin:0}.guide{margin-top:30px;border-top:1px solid #d4ded5;padding-top:22px}.guide h2{font-size:16px}.guide p{font-size:13px;color:var(--muted);margin:10px 0}footer{font-size:11px;color:var(--muted);margin-top:28px}noscript{display:block;margin:20px}@media(max-width:600px){header{padding:30px 22px 26px}h1{font-size:30px}main{padding:24px 16px 40px}.machines{grid-template-columns:1fr;gap:14px}.machine{min-height:230px;padding:22px}.machine h3{font-size:26px}}
-</style></head><body><header><small>PERSONAL FIELD NOTES</small><h1>今日の実戦を、<br>次の判断につなげる。</h1><p>当選履歴と観測値を残す、自分用の実戦ノート。</p></header><main><div class="sectionline"><h2>機種を選ぶ</h2><span>実戦ノート</span></div><div id="machines" class="machines"></div><noscript><a href="kabaneri.html">カバネリ</a> ／ <a href="juggler.html">ジャグラー</a><p>ノートの入力・保存にはJavaScriptが必要です。</p></noscript><div class="coming"><b aria-hidden="true">＋</b><div><strong>機種はこれから追加予定</strong><p>新しいノートも、このメニューから。</p></div></div><section class="guide"><h2>iPhoneで使うとき</h2><p>Safariで開き、共有メニューの「ホーム画面に追加」で、次回からすぐにアクセスできます。</p><p>記録は、この端末・このブラウザに保存されます。PCとは自動同期されません。プライベートブラウズは避け、実戦終了時に各ノートからJSONを保存してください。ブラウザのデータを消すと、端末内の記録も消えます。</p><p>このサイトに設定判別の自動計算はありません。記録したJSONやテキストをAIへ渡して、判別を相談できます。</p></section><footer>実戦ノート / 入力データのサーバー送信なし</footer></main><script src="machines.js"></script><script>
-const list=document.getElementById('machines');
-for(const m of window.NOTE_MACHINES){const a=document.createElement('a');a.className='machine';a.href=m.path;const top=document.createElement('div');top.className='top';for(const [cls,value] of [['num',m.number],['tag',m.tag]]){const el=document.createElement('span');el.className=cls;el.textContent=value;top.append(el)}a.append(top);for(const [tag,cls,value] of [['h3','',m.name],['p','subtitle',m.subtitle],['p','description',m.description]]){const el=document.createElement(tag);el.className=cls;el.textContent=value;a.append(el)}const open=document.createElement('div');open.className='open';open.textContent='ノートを開く';const arrow=document.createElement('b');arrow.textContent='→';arrow.setAttribute('aria-hidden','true');open.append(arrow);a.append(open);list.append(a)}
-</script></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#be1e2d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>SLOT STRATEGY ARCHIVE ｜ スロット設定判別＆攻略ポータル</title>
+
+  <!-- Google Fonts: Bebas Neue, Oswald, Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       CONSTRUCTIVIST EDITORIAL DESIGN SYSTEM (ロシア・構成主義スタイル)
+       Inspired by "CONSTRUCTIVISMO / PYMES / NARDA LEPES" Magazine Layout
+       Palette: Vermilion Red (#be1e2d), Newsprint Cream (#f5eedc), Ink Black (#141414)
+       ================================================================ */
+    :root {
+      --c-red: #be1e2d;
+      --c-red-dark: #981421;
+      --c-red-light: #d8293a;
+      --c-cream: #f5eedc;
+      --c-cream-card: #fbf7ed;
+      --c-cream-dark: #e8dfc7;
+      --c-black: #141414;
+      --c-black-soft: #202020;
+      --c-gray: #3a362f;
+      --c-white: #ffffff;
+      --font-display: 'Bebas Neue', 'Oswald', 'Impact', sans-serif;
+      --font-condensed: 'Oswald', 'Arial Narrow', sans-serif;
+      --font-sans: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      --border-thick: 2px solid var(--c-black);
+      --border-heavy: 3px solid var(--c-black);
+      --shadow-block: 4px 4px 0px var(--c-black);
+      --shadow-block-lg: 6px 6px 0px var(--c-black);
+      --shadow-block-red: 4px 4px 0px var(--c-red-dark);
+      --safe-bottom: env(safe-area-inset-bottom, 20px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--c-cream);
+      color: var(--c-black);
+      line-height: 1.5;
+      padding-bottom: calc(50px + var(--safe-bottom));
+      user-select: none;
+      background-image: radial-gradient(var(--c-cream-dark) 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ================================================================
+       TOP TICKER & MASTHEAD (構成主義ヘッダー)
+       ================================================================ */
+    .top-ticker {
+      background: var(--c-red);
+      color: var(--c-white);
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      padding: 4px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: var(--border-thick);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-star { color: #facc15; margin: 0 6px; }
+
+    header.masthead {
+      background: var(--c-cream-card);
+      border-bottom: var(--border-heavy);
+      padding: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .masthead-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-stamp {
+      background: var(--c-red);
+      color: var(--c-white);
+      padding: 6px 12px;
+      border: var(--border-thick);
+      box-shadow: var(--shadow-block);
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .brand-stamp .vol {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 1px;
+      display: block;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      padding-bottom: 2px;
+      margin-bottom: 2px;
+    }
+    .brand-stamp .main-code {
+      font-family: var(--font-display);
+      font-size: 20px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .masthead-center {
+      flex: 1;
+    }
+    .site-category {
+      font-family: var(--font-condensed);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--c-red);
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .site-category::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: var(--c-red);
+    }
+    .site-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      color: var(--c-black);
+      font-weight: 900;
+      margin-top: 2px;
+    }
+    .site-subtitle {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--c-gray);
+      letter-spacing: 0.5px;
+    }
+
+    .badge-barcode {
+      display: none;
+    }
+    @media (min-width: 520px) {
+      .badge-barcode {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-family: var(--font-display);
+        font-size: 10px;
+        color: var(--c-black);
+        flex-shrink: 0;
+      }
+      .barcode-lines {
+        font-family: monospace;
+        font-size: 15px;
+        letter-spacing: -1px;
+        line-height: 1;
+        font-weight: 900;
+      }
+    }
+
+    /* ================================================================
+       MAIN LAYOUT CONTAINER
+       ================================================================ */
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 14px;
+    }
+
+    /* ================================================================
+       SUMARIO (構成主義・目次インデックス帯)
+       ================================================================ */
+    .section-headline {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0 10px;
+    }
+    .headline-tag {
+      background: var(--c-black);
+      color: var(--c-white);
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+    }
+    .headline-text {
+      font-family: var(--font-condensed);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--c-black);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .headline-line {
+      flex: 1;
+      height: 2px;
+      background: var(--c-black);
+    }
+
+    .sumario-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .sumario-col {
+      background: var(--c-cream-card);
+      border: var(--border-thick);
+      box-shadow: 3px 3px 0px var(--c-black);
+      padding: 10px;
+      position: relative;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .sumario-col:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--c-black);
+    }
+    .sumario-col.active {
+      background: var(--c-red);
+      color: var(--c-white);
+      border-color: var(--c-black);
+    }
+    .sumario-num {
+      font-family: var(--font-display);
+      font-size: 32px;
+      line-height: 0.9;
+      font-weight: 900;
+      color: var(--c-red);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .sumario-col.active .sumario-num {
+      color: var(--c-white);
+    }
+    .sumario-num .status-dot {
+      font-size: 10px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      padding: 2px 5px;
+      border: 1px solid var(--c-black);
+      background: var(--c-white);
+      color: var(--c-black);
+    }
+    .sumario-col.active .status-dot {
+      background: var(--c-black);
+      color: var(--c-white);
+      border-color: var(--c-white);
+    }
+    .sumario-title {
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 6px;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sumario-sub {
+      font-size: 10px;
+      color: var(--c-gray);
+      margin-top: 2px;
+    }
+    .sumario-col.active .sumario-sub {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* ================================================================
+       SEARCH & FILTER BAR
+       ================================================================ */
+    .search-block {
+      background: var(--c-cream-card);
+      border: var(--border-heavy);
+      box-shadow: var(--shadow-block);
+      padding: 12px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .search-input-wrap {
+      position: relative;
+      display: flex;
+    }
+    .search-input {
+      width: 100%;
+      background: var(--c-white);
+      border: var(--border-thick);
+      padding: 10px 14px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--c-black);
+      outline: none;
+      box-shadow: inset 2px 2px 0px rgba(0,0,0,0.06);
+    }
+    .search-input:focus {
+      border-color: var(--c-red);
+    }
+    .filter-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .chip-btn {
+      background: var(--c-white);
+      border: var(--border-thick);
+      font-family: var(--font-condensed);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--c-black);
+      transition: all 0.1s;
+    }
+    .chip-btn:active, .chip-btn.active {
+      background: var(--c-red);
+      color: var(--c-white);
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--c-black);
+    }
+
+    /* ================================================================
+       FEATURED SPREAD: 甲鉄城のカバネリ 海門決戦 (主役ポータル)
+       Inspired by "NARDA LEPES" Big Bold Editorial Spread
+       ================================================================ */
+    .featured-spread {
+      background: var(--c-cream-card);
+      border: var(--border-heavy);
+      box-shadow: var(--shadow-block-lg);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (min-width: 640px) {
+      .featured-spread {
+        flex-direction: row;
+      }
+    }
+
+    /* 左側：赤ベタ極太ブロック */
+    .spread-side-red {
+      background: var(--c-red);
+      color: var(--c-white);
+      padding: 20px 16px;
+      border-bottom: var(--border-heavy);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    @media (min-width: 640px) {
+      .spread-side-red {
+        width: 38%;
+        border-bottom: none;
+        border-right: var(--border-heavy);
+      }
+    }
+    .spread-side-red::before {
+      content: "★ FLAGSHIP 01 ★";
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 2px;
+      background: var(--c-black);
+      color: var(--c-white);
+      padding: 2px 8px;
+      display: inline-block;
+      width: fit-content;
+      margin-bottom: 12px;
+    }
+    .spread-big-title {
+      font-family: var(--font-display);
+      font-size: 44px;
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      text-shadow: 2px 2px 0px var(--c-black);
+    }
+    .spread-sub-jp {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      border-left: 4px solid var(--c-white);
+      padding-left: 8px;
+    }
+    .spread-badges-v {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+    .badge-v {
+      background: var(--c-black);
+      color: var(--c-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border: 1px solid var(--c-white);
+    }
+
+    /* 右側：データシート＆アクション */
+    .spread-body {
+      flex: 1;
+      padding: 20px 18px;
+      background: var(--c-cream-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .spread-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: var(--border-thick);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+    }
+    .spread-maker {
+      font-family: var(--font-condensed);
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--c-red);
+      letter-spacing: 0.5px;
+    }
+    .spread-status {
+      font-size: 11px;
+      font-weight: 900;
+      background: #16a34a;
+      color: var(--c-white);
+      padding: 2px 8px;
+      border: 1px solid var(--c-black);
+    }
+
+    /* 巨大数値グリッド（構成主義スタイル） */
+    .stat-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .stat-box {
+      background: var(--c-white);
+      border: var(--border-thick);
+      padding: 8px 6px;
+      text-align: center;
+      box-shadow: 2px 2px 0px var(--c-black);
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--c-gray);
+      margin-bottom: 2px;
+    }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--c-black);
+    }
+    .stat-val.red { color: var(--c-red); }
+
+    .spread-desc {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--c-black-soft);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      background: rgba(245, 238, 220, 0.7);
+      border-left: 4px solid var(--c-black);
+      padding: 8px 10px;
+    }
+
+    /* アクションボタン群 */
+    .spread-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    @media (min-width: 480px) {
+      .spread-actions {
+        flex-direction: row;
+      }
+    }
+    .btn-construct {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-condensed);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 12px 14px;
+      border: var(--border-heavy);
+      box-shadow: var(--shadow-block);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.12s;
+    }
+    .btn-construct:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--c-black);
+    }
+    .btn-red {
+      background: var(--c-red);
+      color: var(--c-white);
+    }
+    .btn-red:hover { background: var(--c-red-light); }
+    .btn-black {
+      background: var(--c-black);
+      color: var(--c-white);
+    }
+    .btn-black:hover { background: var(--c-black-soft); }
+
+    /* ================================================================
+       MACHINE DIRECTORY CARDS (機種一覧カード)
+       ================================================================ */
+    .machine-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .m-card {
+      background: var(--c-cream-card);
+      border: var(--border-heavy);
+      box-shadow: var(--shadow-block);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    @media (min-width: 600px) {
+      .m-card {
+        flex-direction: row;
+      }
+    }
+    .m-card:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: var(--shadow-block-lg);
+    }
+    .m-card.disabled {
+      opacity: 0.75;
+      background: #f0eae0;
+    }
+
+    /* カード左側番号リボン */
+    .m-ribbon {
+      background: var(--c-black);
+      color: var(--c-white);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: var(--border-thick);
+      flex-shrink: 0;
+    }
+    @media (min-width: 600px) {
+      .m-ribbon {
+        width: 140px;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-bottom: none;
+        border-right: var(--border-thick);
+      }
+    }
+    .m-ribbon.red-ribbon {
+      background: var(--c-red);
+    }
+    .m-num {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .m-stamp-text {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* カード本体 */
+    .m-content {
+      flex: 1;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .m-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .m-maker {
+      font-family: var(--font-condensed);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--c-red);
+      letter-spacing: 0.5px;
+    }
+    .m-state {
+      font-size: 10px;
+      font-weight: 900;
+      padding: 2px 7px;
+      border: 1px solid var(--c-black);
+      background: var(--c-white);
+    }
+    .m-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--c-black);
+      margin-bottom: 6px;
+    }
+    .m-desc {
+      font-size: 12px;
+      color: var(--c-gray);
+      line-height: 1.5;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .m-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .m-tag {
+      font-size: 10px;
+      font-weight: 800;
+      background: var(--c-white);
+      border: 1px solid var(--c-black);
+      padding: 2px 6px;
+      color: var(--c-black);
+    }
+
+    /* ================================================================
+       INFOGRAPHIC SPREAD: 立ち回り3大原則 ("ORGANIZACION INTELIGENTE")
+       ================================================================ */
+    .principles-box {
+      background: var(--c-white);
+      border: var(--border-heavy);
+      box-shadow: var(--shadow-block);
+      padding: 18px 14px;
+      margin-bottom: 24px;
+    }
+    .principles-header {
+      border-bottom: var(--border-thick);
+      padding-bottom: 8px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .principles-tag {
+      background: var(--c-red);
+      color: var(--c-white);
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+    }
+    .principles-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--c-black);
+      letter-spacing: 0.5px;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 600px) {
+      .principles-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .p-col {
+      border: var(--border-thick);
+      background: var(--c-cream-card);
+      padding: 12px;
+      box-shadow: 2px 2px 0px var(--c-black);
+    }
+    .p-col-num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--c-red);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .p-col-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: var(--c-black);
+      border-bottom: 2px solid var(--c-black);
+      padding-bottom: 4px;
+      margin-bottom: 8px;
+    }
+    .p-col-text {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--c-gray);
+      line-height: 1.5;
+    }
+
+    /* ================================================================
+       FOOTER (構成主義スタンプ＆クレジット)
+       ================================================================ */
+    footer.construct-footer {
+      background: var(--c-black);
+      color: var(--c-cream);
+      border-top: var(--border-heavy);
+      padding: 24px 16px;
+      text-align: center;
+      margin-top: 30px;
+    }
+    .footer-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: var(--c-white);
+    }
+    .footer-stars {
+      color: var(--c-red);
+      letter-spacing: 4px;
+    }
+    .footer-note {
+      font-size: 11px;
+      color: #999;
+      max-width: 500px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- トップティッカー -->
+  <div class="top-ticker">
+    <span><span class="ticker-star">★</span> CONSTRUCTIVIST SLOT ARCHIVE 2026 <span class="ticker-star">★</span> COMPLETE ANALYTICS & STRATEGY PORTAL</span>
+    <span>ISSUE #01 <span class="ticker-star">★</span> OFFLINE READY</span>
+  </div>
+
+  <!-- マストヘッド（新聞・雑誌風ヘッダー） -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand-stamp">
+        <span class="vol">VOL.2026</span>
+        <div class="main-code">SLOT</div>
+      </div>
+      <div class="masthead-center">
+        <div class="site-category">Strategy & Analytics Archive</div>
+        <h1 class="site-title">設定判別＆攻略総合ポータル</h1>
+        <div class="site-subtitle">スマスロ全機種解析・実戦期待値・AIワンタップ判別</div>
+      </div>
+      <div class="badge-barcode">
+        <span>AUTHENTICATED</span>
+        <div class="barcode-lines">||| | ||||| || |||</div>
+        <span>ARCHIVE #01</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SUMARIO（構成主義 目次インデックス） -->
+    <div class="section-headline">
+      <span class="headline-tag">SUMARIO</span>
+      <span class="headline-text">Machine Index & Quick Status</span>
+      <div class="headline-line"></div>
+    </div>
+
+    <div class="sumario-strip">
+      <a href="海門決戦_設定判別ポータル.html" class="sumario-col active">
+        <div class="sumario-num">
+          <span>01</span>
+          <span class="status-dot">稼働中</span>
+        </div>
+        <div class="sumario-title">カバネリ 海門決戦</div>
+        <div class="sumario-sub">サミー ｜ 完全解析版</div>
+      </a>
+
+      <a href="ジャグラー_設定判別ポータル.html" class="sumario-col active" style="background:var(--c-red); color:#fff;">
+        <div class="sumario-num" style="color:#fff;">
+          <span>02</span>
+          <span class="status-dot" style="background:#fff; color:var(--c-black);">完全版</span>
+        </div>
+        <div class="sumario-title">ジャグラー 7機種</div>
+        <div class="sumario-sub" style="color:#f5eedc;">北電子 ｜ ガリぞう調べ</div>
+      </a>
+
+      <a href="kabaneri.html" class="sumario-col">
+        <div class="sumario-num">
+          <span>03</span>
+          <span class="status-dot">記録帳</span>
+        </div>
+        <div class="sumario-title">海門実戦ノート</div>
+        <div class="sumario-sub">データ入力・JSON保存</div>
+      </a>
+
+      <a href="juggler.html" class="sumario-col active" style="background:#15803d; color:#fff;">
+        <div class="sumario-num" style="color:#fff;">
+          <span>04</span>
+          <span class="status-dot" style="background:#fff; color:#15803d;">記録帳</span>
+        </div>
+        <div class="sumario-title">ジャグラー実戦ノート</div>
+        <div class="sumario-sub" style="color:#dcfce7;">ブドウカウント・差枚記録</div>
+      </a>
+
+      <div class="sumario-col" style="opacity: 0.65;">
+        <div class="sumario-num">
+          <span>05</span>
+          <span class="status-dot">準備中</span>
+        </div>
+        <div class="sumario-title">スマスロ 北斗の拳</div>
+        <div class="sumario-sub">サミー ｜ 順次搭載</div>
+      </div>
+
+      <div class="sumario-col" style="opacity: 0.65;">
+        <div class="sumario-num">
+          <span>04</span>
+          <span class="status-dot">準備中</span>
+        </div>
+        <div class="sumario-title">モンキーターンV</div>
+        <div class="sumario-sub">山佐 ｜ 順次搭載</div>
+      </div>
+
+      <div class="sumario-col" style="opacity: 0.65;">
+        <div class="sumario-num">
+          <span>05</span>
+          <span class="status-dot">準備中</span>
+        </div>
+        <div class="sumario-title">からくりサーカス</div>
+        <div class="sumario-sub">SANKYO ｜ 順次搭載</div>
+      </div>
+    </div>
+
+    <!-- 検索＆クイックフィルター -->
+    <div class="search-block">
+      <div class="search-input-wrap">
+        <input type="text" id="machineSearch" class="search-input" placeholder="🔍 機種名・メーカー（サミー、山佐など）で検索...">
+      </div>
+      <div class="filter-chips">
+        <button class="chip-btn active" data-filter="all">★ 全て表示</button>
+        <button class="chip-btn" data-filter="active">● 稼働中</button>
+        <button class="chip-btn" data-filter="kitac">北電子</button>
+        <button class="chip-btn" data-filter="sammy">サミー</button>
+        <button class="chip-btn" data-filter="yamasa">山佐</button>
+        <button class="chip-btn" data-filter="sankyo">SANKYO</button>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 主役スプレッド：甲鉄城のカバネリ 海門決戦 (完全解析版) -->
+    <!-- ============================================================== -->
+    <div class="section-headline">
+      <span class="headline-tag" style="background:var(--c-red);">FLAGSHIP</span>
+      <span class="headline-text">Featured Master Machine</span>
+      <div class="headline-line"></div>
+    </div>
+
+    <div class="featured-spread" id="flagshipCard">
+      <!-- 左側：赤ベタ極太ブロック（NARDA LEPESスタイル） -->
+      <div class="spread-side-red">
+        <div>
+          <div class="spread-big-title">KABANERI</div>
+          <div class="spread-sub-jp">甲鉄城のカバネリ<br>海門決戦</div>
+        </div>
+        <div>
+          <p style="font-size:11px; line-height:1.4; opacity:0.9; margin-bottom:10px;">
+            ホール実践に特化した完全網羅ポータル。確定示唆・約11万件実戦期待値・19枚の高画質示唆写真・AI判定を完全収録。
+          </p>
+          <div class="spread-badges-v">
+            <span class="badge-v">スマスロ第1弾</span>
+            <span class="badge-v">高純増6.0枚</span>
+            <span class="badge-v">ツラヌキ搭載</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右側：データシート＆アクション -->
+      <div class="spread-body">
+        <div>
+          <div class="spread-meta-top">
+            <span class="spread-maker">★ SAMMY ｜ 2026年最新稼働</span>
+            <span class="spread-status">● VERIFIED 完全稼働中</span>
+          </div>
+
+          <!-- 巨大スペックマトリックス -->
+          <div class="stat-matrix">
+            <div class="stat-box">
+              <div class="stat-label">設定6 機械割</div>
+              <div class="stat-val red">114.9%</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">AT 純増枚数</div>
+              <div class="stat-val">6.0枚</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">ゾーン狙い目</div>
+              <div class="stat-val red">250G</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">示唆写真数</div>
+              <div class="stat-val">19枚</div>
+            </div>
+          </div>
+
+          <div class="spread-desc">
+            <b>【完全解析 ＋ 実戦データ・設定6挙動連動ポータル】</b><br>
+            ちょんぼりすた全解析数値、すろらぼ約11万件データ（300G短縮天井／ゾーン期待値）、サミートロフィー出現率、設定6大量実戦値（勝率83.6%・スランプ波形3パターン・第3周期2倍差・押し引きチェックリスト）、いそまる氏・柊ちさき氏完全実戦履歴、AI相談文ワンタップ生成に対応。
+          </div>
+        </div>
+
+        <div class="spread-actions">
+          <a href="海門決戦_設定判別ポータル.html" class="btn-construct btn-red">
+            <span>🔥 設定判別ポータルを開く (完全版)</span>
+          </a>
+          <a href="kabaneri.html" class="btn-construct btn-black">
+            <span>📝 実戦ノートを開く (ログ記録)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 機種一覧アーカイブ (ARCHIVE DIRECTORY) -->
+    <!-- ============================================================== -->
+    <div class="section-headline">
+      <span class="headline-tag">ARCHIVE</span>
+      <span class="headline-text">Machine Directory</span>
+      <div class="headline-line"></div>
+    </div>
+
+    <div class="machine-grid" id="machineGrid">
+
+      <!-- 01: カバネリ 海門決戦 -->
+      <a href="海門決戦_設定判別ポータル.html" class="m-card" data-maker="sammy" data-status="active">
+        <div class="m-ribbon red-ribbon">
+          <span class="m-stamp-text">★ SAMMY ★</span>
+          <span class="m-num">01</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">スマスロ ｜ サミー</span>
+              <span class="m-state" style="background:var(--c-red); color:#fff; border-color:var(--c-black);">● 完全版稼働中</span>
+            </div>
+            <h2 class="m-title">甲鉄城のカバネリ 海門決戦</h2>
+            <div class="m-desc">
+              全確定・濃厚示唆演出、下段ベル確率、周期抽選値、すろらぼ11万件実戦期待値、示唆写真19枚、AI判別プロンプト生成。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">設定6: 114.9%</span>
+            <span class="m-tag">純増6.0枚</span>
+            <span class="m-tag">下段ベル</span>
+            <span class="m-tag">短縮天井</span>
+            <span class="m-tag">写真19枚</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 02: ジャグラーシリーズ完全解析 -->
+      <a href="ジャグラー_設定判別ポータル.html" class="m-card" data-maker="kitac" data-status="active">
+        <div class="m-ribbon red-ribbon">
+          <span class="m-stamp-text">★ KITAC ★</span>
+          <span class="m-num">02</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">6号機 ｜ 北電子</span>
+              <span class="m-state" style="background:var(--c-red); color:#fff; border-color:var(--c-black);">● 完全版稼働中</span>
+            </div>
+            <h2 class="m-title">ジャグラーシリーズ 設定判別ポータル</h2>
+            <div class="m-desc">
+              ネオアイム・マイV・ガールズSS・ハッピー・ミラクル・ミスター・ゴージャグ全7機種対応！ガリぞう調べブドウ確率（1000/3000/8000G目安）、単独REG、逆算シミュレータ＆AI支援。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">対象7機種</span>
+            <span class="m-tag">ガリぞう調べ</span>
+            <span class="m-tag">ブドウG数別</span>
+            <span class="m-tag">単独REG</span>
+            <span class="m-tag">逆算ツール</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 03: 海門実戦ノート -->
+      <a href="kabaneri.html" class="m-card" data-maker="sammy" data-status="active">
+        <div class="m-ribbon">
+          <span class="m-stamp-text">★ TOOL ★</span>
+          <span class="m-num">03</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">実戦記録帳 ｜ ローカル保存</span>
+              <span class="m-state">● ローカル対応</span>
+            </div>
+            <h2 class="m-title">海門ノート（カバネリ実戦ログ記録帳）</h2>
+            <div class="m-desc">
+              初当り履歴、周期当選率、示唆メモ、マイスロ累積値のブラウザ内保存＆JSON書き出しに対応した実戦用カウンター。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">当選履歴</span>
+            <span class="m-tag">周期スルー率</span>
+            <span class="m-tag">JSONバックアップ</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 04: ジャグラー実戦ノート -->
+      <a href="juggler.html" class="m-card" data-maker="kitac" data-status="active">
+        <div class="m-ribbon" style="background:#15803d;">
+          <span class="m-stamp-text">★ TOOL ★</span>
+          <span class="m-num">04</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">実戦記録帳 ｜ 北電子対応</span>
+              <span class="m-state" style="background:#15803d; color:#fff; border-color:var(--c-black);">● 完全版稼働中</span>
+            </div>
+            <h2 class="m-title">ジャグラー実戦ノート（ブドウ・ボーナス記録帳）</h2>
+            <div class="m-desc">
+              ホール実戦中のブドウカウント・単独REG・差枚数推移をブラウザに自動保存。Googleドライブ保存やインクリメント入力に対応。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">全7機種対応</span>
+            <span class="m-tag">ブドウカウント</span>
+            <span class="m-tag">単独REG判別</span>
+            <span class="m-tag">差枚グラフ連動</span>
+            <span class="m-tag">Gドライブ連携</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 05: スマスロ 北斗の拳 -->
+      <div class="m-card disabled" data-maker="sammy" data-status="pending">
+        <div class="m-ribbon">
+          <span class="m-stamp-text">★ SAMMY ★</span>
+          <span class="m-num">05</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">スマスロ ｜ サミー</span>
+              <span class="m-state">準備中 (順次追加)</span>
+            </div>
+            <h2 class="m-title">スマスロ 北斗の拳</h2>
+            <div class="m-desc">
+              小役確率（中段チェリー・スイカ）、モード移行率、サミートロフィー、ボイス示唆、冷遇区間期待値を搭載予定。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">小役確率</span>
+            <span class="m-tag">モード推測</span>
+            <span class="m-tag">冷遇区間</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04: スマスロ モンキーターンV -->
+      <div class="m-card disabled" data-maker="yamasa" data-status="pending">
+        <div class="m-ribbon">
+          <span class="m-stamp-text">★ YAMASA ★</span>
+          <span class="m-num">04</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">スマスロ ｜ 山佐</span>
+              <span class="m-state">準備中 (順次追加)</span>
+            </div>
+            <h2 class="m-title">スマスロ モンキーターンV</h2>
+            <div class="m-desc">
+              周期・ゾーン狙い期待値、ライバルモード示唆、ヘルメットロゴ、舟券示唆、設定差解析を順次搭載予定。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">周期天井</span>
+            <span class="m-tag">ライバルモード</span>
+            <span class="m-tag">舟券示唆</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05: スマスロ からくりサーカス -->
+      <div class="m-card disabled" data-maker="sankyo" data-status="pending">
+        <div class="m-ribbon">
+          <span class="m-stamp-text">★ SANKYO ★</span>
+          <span class="m-num">05</span>
+        </div>
+        <div class="m-content">
+          <div>
+            <div class="m-top">
+              <span class="m-maker">スマスロ ｜ SANKYO</span>
+              <span class="m-state">準備中 (順次追加)</span>
+            </div>
+            <h2 class="m-title">スマスロ からくりサーカス</h2>
+            <div class="m-desc">
+              液晶ゲーム数ゾーン期待値、幕間チャンス当選率、終了画面示唆、運命の一劇突破率を順次搭載予定。
+            </div>
+          </div>
+          <div class="m-tags">
+            <span class="m-tag">液晶G数</span>
+            <span class="m-tag">幕間チャンス</span>
+            <span class="m-tag">運命の一劇</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 構成主義インフォグラフィック：現場立ち回り3大原則 -->
+    <!-- Inspired by "ORGANIZACION INTELIGENTE" in reference slide -->
+    <!-- ============================================================== -->
+    <div class="principles-box">
+      <div class="principles-header">
+        <span class="principles-tag">STRATEGY</span>
+        <h3 class="principles-title">現場での立ち回り 3大原則</h3>
+      </div>
+      <div class="principles-grid">
+        <div class="p-col">
+          <div class="p-col-num">01</div>
+          <div class="p-col-title">確定示唆を最速で刈り取る</div>
+          <div class="p-col-text">
+            サミートロフィー、おみくじの大吉・中吉、ST終了画面（水着・全員集合）の出現機会を見逃さない。小吉の回数法則と否定系で設定を素早く絞り込みます。
+          </div>
+        </div>
+        <div class="p-col">
+          <div class="p-col-num">02</div>
+          <div class="p-col-title">期待値と天井短縮を徹底</div>
+          <div class="p-col-text">
+            設定変更時やST駆け抜け後の短縮天井（300G＋α）、高設定優遇の1〜2周期ゾーンなど、期待値がプラスとなるラインを数値に基づいて客観的に見極めます。
+          </div>
+        </div>
+        <div class="p-col">
+          <div class="p-col-num">03</div>
+          <div class="p-col-title">AIワンタッチ総合判別</div>
+          <div class="p-col-text">
+            ポータルから「総G数・下段ベル・初当り・周期・出現示唆」をワンタップでプロンプト化。店のベース配分（事前分布）も考慮した精緻な設定推測を実行可能です。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- iPhoneでのホーム画面追加案内（UN SANDWICH / TIPS BOX） -->
+    <!-- ============================================================== -->
+    <div class="principles-box" style="background:var(--c-cream-card);">
+      <div class="principles-header">
+        <span class="principles-tag" style="background:var(--c-black);">OFFLINE TIPS</span>
+        <h3 class="principles-title">iPhoneでのホーム画面追加 ＆ 記録の保存</h3>
+      </div>
+      <p style="font-size:12px; font-weight:700; line-height:1.6; color:var(--c-black-soft); margin-bottom:10px;">
+        Safariで本ページを開き、共有ボタン（四角から上矢印）から「<b>ホーム画面に追加</b>」をタップしてください。
+        ホーム画面からすぐに開けます。ページを開く際は通信が必要です。完全オフライン起動には対応していません。実戦ノートの入力データは同じ端末・ブラウザに保存されるため、実戦終了時はJSONでバックアップしてください。
+      </p>
+      <div style="font-size:11px; font-weight:700; color:var(--c-red); border-left:3px solid var(--c-red); padding-left:8px;">
+        ★ 実戦中の入力データは端末のローカルストレージに保管されます。ブラウザデータの削除で消えるため、JSON保存を併用してください。
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ============================================================== -->
+  <!-- フッター（ロシア構成主義風クレジット＆スタンプ） -->
+  <!-- ============================================================== -->
+  <footer class="construct-footer">
+    <div class="footer-inner">
+      <div class="footer-stars">★ ★ ★ ★ ★</div>
+      <div class="footer-logo">SLOT STRATEGY ARCHIVE</div>
+      <div class="footer-note">
+        CONSTRUCTIVIST EDITORIAL DESIGN ｜ ISSUE 2026<br>
+        スマスロ甲鉄城のカバネリ海門決戦・完全解析＆設定推測アーカイブポータル<br>
+        データ出典：ちょんぼりすた ｜ すろらぼ実戦値 ｜ パチスロ実戦動画検証
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // リアルタイム検索 & フィルター
+    const searchInput = document.getElementById('machineSearch');
+    const cards = document.querySelectorAll('.m-card');
+    const chipBtns = document.querySelectorAll('.chip-btn');
+    let currentFilter = 'all';
+
+    function filterCards() {
+      const query = searchInput.value.toLowerCase().trim();
+
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const maker = card.getAttribute('data-maker');
+        const status = card.getAttribute('data-status');
+
+        const matchesQuery = text.includes(query);
+        let matchesFilter = true;
+
+        if (currentFilter === 'active') {
+          matchesFilter = (status === 'active');
+        } else if (currentFilter === 'kitac') {
+          matchesFilter = (maker === 'kitac');
+        } else if (currentFilter === 'sammy') {
+          matchesFilter = (maker === 'sammy');
+        } else if (currentFilter === 'yamasa') {
+          matchesFilter = (maker === 'yamasa');
+        } else if (currentFilter === 'sankyo') {
+          matchesFilter = (maker === 'sankyo');
+        }
+
+        if (matchesQuery && matchesFilter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterCards);
+
+    chipBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        chipBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentFilter = this.getAttribute('data-filter');
+        filterCards();
+      });
+    });
+  </script>
+</body>
+</html>
