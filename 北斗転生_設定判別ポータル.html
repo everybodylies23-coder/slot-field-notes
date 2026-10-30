@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#be1e2d">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>スマスロ 北斗の拳 転生の章2 設定判別＆攻略ポータル ｜ ちょんぼりすた準拠・シャッター完全判別</title>
+
+  <!-- Google Fonts: Bebas Neue, Oswald, Noto Sans JP -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@400;600;700;800;900&family=Oswald:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       CONSTRUCTIVIST EDITORIAL DESIGN SYSTEM (ロシア構成主義スタイル)
+       Inspired by "CONSTRUCTIVISMO / PYMES / NARDA LEPES" Magazine Layout
+       iPhone & Mobile Optimized Layout with High Contrast & Readability
+       ================================================================ */
+    :root {
+      --bg-primary: #f5eedc;       /* レトロ新聞紙のような生成りクリーム色 */
+      --bg-card: #ffffff;          /* カード白背景 */
+      --bg-card-sub: #fbf7ed;      /* カード内サブ背景 */
+      --text-main: #141414;        /* 高コントラスト墨黒文字 */
+      --text-sub: #4b4842;         /* 補助テキスト */
+      --accent-red: #be1e2d;       /* バーミリオンレッド（見出し・アクセント） */
+      --accent-red-dark: #981421;  /* 濃い赤 */
+      --accent-blue: #1d4ed8;      /* インディゴブルー */
+      --accent-gold: #b45309;      /* ゴールド・琥珀 */
+      --border-strong: 2px solid #141414; /* 力強い2pxの黒罫線 */
+      --border-heavy: 3px solid #141414;  /* 3pxの極太黒線 */
+      --border-light: 1px solid #d4cdbd;  /* テーブル内等の区切り線 */
+      --shadow-block: 4px 4px 0px #141414; /* 浮き出しブロック影 */
+      --shadow-block-sm: 2px 2px 0px #141414;
+      --safe-bottom: env(safe-area-inset-bottom, 20px);
+
+      /* 【厳守】設定6 ハイライト配色 */
+      --s6-bg: #eefde6;            /* 薄黄緑・ライトグリーン背景 */
+      --s6-text: #b91c1c;          /* 濃く鮮やかなクリムゾンレッド文字 */
+      --s6-badge-bg: #15803d;      /* 深いエメラルドグリーンバッジ */
+      --s6-badge-text: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: calc(75px + var(--safe-bottom));
+      user-select: text;
+      -webkit-font-smoothing: antialiased;
+      background-image: radial-gradient(#e8dfc7 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ================================================================
+       HEADER (構成主義 マストヘッド)
+       ================================================================ */
+    header {
+      background: #fbf7ed;
+      border-bottom: var(--border-heavy);
+      padding: 10px 14px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .header-back-btn {
+      background: var(--text-main);
+      color: #ffffff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 800;
+      font-size: 11.5px;
+      padding: 5px 9px;
+      border: 1px solid var(--text-main);
+      border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+    }
+    .header-badge {
+      background: var(--accent-red);
+      color: #ffffff;
+      font-size: 10.5px;
+      font-weight: 900;
+      padding: 3px 6px;
+      border: 1px solid var(--text-main);
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .header-title {
+      font-family: 'Oswald', 'Noto Sans JP', sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--text-main);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: -0.3px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .view-toggle-btn {
+      background: #ffffff;
+      border: var(--border-strong);
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: 2px 2px 0px var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ================================================================
+       SUB NAVIGATION TABS (上部横スクロールタブ)
+       ================================================================ */
+    .top-subnav {
+      background: #ffffff;
+      border-bottom: var(--border-strong);
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      position: sticky;
+      top: 50px;
+      z-index: 90;
+      padding: 6px 8px;
+      gap: 6px;
+    }
+    .top-subnav::-webkit-scrollbar { display: none; }
+    .subnav-btn {
+      background: #fbf7ed;
+      border: var(--border-strong);
+      color: var(--text-main);
+      font-size: 12px;
+      font-weight: 800;
+      padding: 6px 12px;
+      white-space: nowrap;
+      border-radius: 3px;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--text-main);
+      transition: all 0.1s;
+    }
+    .subnav-btn.active {
+      background: var(--accent-red);
+      color: #ffffff;
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--text-main);
+    }
+
+    /* ================================================================
+       MAIN LAYOUT & CARDS
+       ================================================================ */
+    main {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 12px 10px;
+    }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    .card {
+      background: var(--bg-card);
+      border: var(--border-strong);
+      border-radius: 4px;
+      box-shadow: var(--shadow-block);
+      margin-bottom: 14px;
+      padding: 12px;
+      position: relative;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+      gap: 6px;
+    }
+    .card-title {
+      color: var(--text-main);
+      font-family: 'Oswald', 'Noto Sans JP', sans-serif;
+      font-weight: 900;
+      font-size: 14.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1.3;
+    }
+    .card-tag {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border: 1px solid var(--text-main);
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+    .tag-red { background: #fee2e2; color: #991b1b; }
+    .tag-blue { background: #dbeafe; color: #1e40af; }
+    .tag-gold { background: #fef3c7; color: #92400e; }
+    .tag-green { background: #dcfce7; color: #166534; }
+    .tag-purple { background: #f3e8ff; color: #6b21a8; }
+
+    /* バナーBOX */
+    .banner-box {
+      background: var(--bg-card-sub);
+      border: 2px solid var(--text-main);
+      border-radius: 4px;
+      box-shadow: var(--shadow-block-sm);
+      color: var(--text-main);
+      font-size: 12.5px;
+      line-height: 1.6;
+      padding: 10px 12px;
+      margin: 8px 0;
+    }
+    .banner-gold {
+      background: #fffbeb !important;
+      border-left: 6px solid #b45309 !important;
+    }
+    .banner-info {
+      background: #eff6ff !important;
+      border-left: 6px solid #1d4ed8 !important;
+    }
+    .banner-danger {
+      background: #fef2f2 !important;
+      border-left: 6px solid #dc2626 !important;
+    }
+    .banner-success {
+      background: #f0fdf4 !important;
+      border-left: 6px solid #16a34a !important;
+    }
+
+    /* ================================================================
+       【iPhone超見やすい表設計】IPHONE OPTIMIZED TABLES & CARDS
+       ================================================================ */
+    /* 1. 標準テーブル（横スクロール可能＋Sticky見出し） */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      border: var(--border-strong);
+      border-radius: 4px;
+      box-shadow: var(--shadow-block-sm);
+      background: #ffffff;
+      margin: 8px 0;
+      scrollbar-width: thin;
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    th {
+      background: #141414;
+      color: #ffffff;
+      font-weight: 800;
+      padding: 8px 6px;
+      font-size: 11.5px;
+      border-right: 1px solid #333333;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    td {
+      border-bottom: 1px solid #141414;
+      border-right: 1px solid #ded6c0;
+      padding: 8px 6px;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 12px;
+    }
+    tr:nth-child(even) td { background: #fdfaf3; }
+    .col-setting {
+      font-weight: 900;
+      background: #f5eedc !important;
+      border-right: 2px solid #141414 !important;
+    }
+
+    /* 設定6ハイライトルール（厳守） */
+    .row-setting-6 td {
+      background: var(--s6-bg) !important;
+      color: var(--s6-text) !important;
+      font-weight: 800 !important;
+      border-top: 1.5px solid #141414;
+      border-bottom: 2px solid #141414 !important;
+    }
+    .row-setting-6 td b,
+    .row-setting-6 td strong {
+      color: var(--s6-text) !important;
+      font-weight: 900 !important;
+    }
+    td.col-setting-6 {
+      background: var(--s6-badge-bg) !important;
+      color: var(--s6-badge-text) !important;
+      font-weight: 900 !important;
+      border-right: 2px solid #141414 !important;
+      letter-spacing: 0.5px;
+    }
+
+    /* 【ユーザー指示】天命移行あべし示唆該当セル：緑背景＋赤文字 */
+    .cell-b-hint {
+      background: #eefde6 !important;
+      color: #b91c1c !important;
+      font-weight: 900 !important;
+      border: 1.5px solid #16a34a !important;
+      text-align: center;
+    }
+
+    /* 2. iPhone特化：カード型リスト（スマホでスクロールせずに縦読み） */
+    .mobile-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .spec-card-item {
+      background: #ffffff;
+      border: 1.5px solid #141414;
+      border-radius: 4px;
+      padding: 8px;
+      box-shadow: 2px 2px 0px #141414;
+      text-align: center;
+    }
+    .spec-card-setting {
+      font-size: 11px;
+      font-weight: 900;
+      color: #555555;
+      margin-bottom: 2px;
+    }
+    .spec-card-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--text-main);
+    }
+    .spec-card-sub {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent-red);
+      margin-top: 2px;
+    }
+    .spec-card-s6 {
+      background: var(--s6-bg) !important;
+      border: 2px solid var(--accent-red) !important;
+    }
+    .spec-card-s6 .spec-card-setting {
+      color: var(--s6-badge-bg) !important;
+    }
+    .spec-card-s6 .spec-card-val {
+      color: var(--s6-text) !important;
+      font-size: 20px;
+    }
+
+    /* ================================================================
+       PREMIUM HOKUTO CYBER SHUTTER CONSOLE (超洗練シャッター判別ツール)
+       ================================================================ */
+    .shutter-console {
+      background: radial-gradient(circle at 10% 10%, #1e293b 0%, #0f172a 50%, #030712 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 16px 14px;
+      margin: 14px 0;
+      color: #ffffff;
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .shutter-console::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #be1e2d, #f59e0b, #10b981, #3b82f6, #be1e2d);
+      background-size: 250% 100%;
+      animation: consoleShimmer 5s linear infinite;
+    }
+    @keyframes consoleShimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 250% 0%; }
+    }
+    .console-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 10px;
+    }
+    .console-badge {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.2px;
+      color: #94a3b8;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .console-title {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 15.5px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.2px;
+      margin-top: 1px;
+    }
+    .console-live-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #34d399;
+      letter-spacing: 0.5px;
+    }
+    .pulse-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseDot 1.4s ease-in-out infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+    .console-desc {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .console-section-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 900;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+    }
+    .badge-gold {
+      background: #b45309;
+      color: #fef08a;
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+    .badge-blue {
+      background: #1e3a8a;
+      color: #93c5fd;
+      font-size: 9.5px;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: auto;
+    }
+    .console-grid-gold {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+    @media (min-width: 480px) {
+      .console-grid-gold { grid-template-columns: repeat(3, 1fr); }
+    }
+    .shutter-card {
+      position: relative;
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9px;
+      padding: 10px 8px;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .shutter-card:active, .shutter-card.selected {
+      transform: translateY(-2px) scale(1.02);
+    }
+    .shutter-gold {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(180, 83, 9, 0.3) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.4);
+    }
+    .shutter-gold:active, .shutter-gold.selected {
+      background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);
+      border-color: #fef08a;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+    }
+    .shutter-gold .card-range {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: #fef08a;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+    .shutter-gold .card-unit {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fde68a;
+      margin-left: 2px;
+    }
+    .shutter-gold .card-status-tag {
+      font-size: 9.5px;
+      font-weight: 900;
+      color: #ffffff;
+      background: #dc2626;
+      padding: 1px 7px;
+      border-radius: 4px;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .shutter-gold:active .card-status-tag, .shutter-gold.selected .card-status-tag {
+      background: #7f1d1d;
+    }
+
+    .console-grid-blue {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
+    @media (min-width: 480px) {
+      .console-grid-blue { grid-template-columns: repeat(3, 1fr); }
+    }
+    .shutter-blue {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.3) 0%, rgba(15, 23, 42, 0.6) 100%);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      padding: 9px 6px;
+    }
+    .shutter-blue:active, .shutter-blue.selected {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+      border-color: #93c5fd;
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.5);
+    }
+    .shutter-blue .card-range {
+      font-family: 'Oswald', sans-serif;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #e2e8f0;
+      line-height: 1.1;
+    }
+    .shutter-blue .card-sub-label {
+      font-size: 9.5px;
+      color: #93c5fd;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .shutter-slate {
+      background: rgba(51, 65, 85, 0.4);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 9px 6px;
+      opacity: 0.8;
+    }
+    .shutter-slate:active, .shutter-slate.selected {
+      background: #475569;
+      opacity: 1;
+    }
+    .shutter-slate .card-range {
+      font-size: 12px;
+      font-weight: 800;
+      color: #cbd5e1;
+    }
+    .shutter-slate .card-sub-label {
+      font-size: 9px;
+      color: #94a3b8;
+    }
+
+    .shutter-purple-wide {
+      width: 100%;
+      margin-top: 10px;
+      background: linear-gradient(135deg, rgba(126, 34, 206, 0.3) 0%, rgba(76, 29, 149, 0.5) 100%);
+      border: 1px solid rgba(192, 132, 252, 0.45);
+      border-radius: 9px;
+      padding: 11px 12px;
+      text-align: left;
+      align-items: flex-start;
+      box-shadow: 0 4px 12px rgba(126, 34, 206, 0.2);
+    }
+    .shutter-purple-wide:active, .shutter-purple-wide.selected {
+      background: linear-gradient(135deg, #7e22ce 0%, #581c87 100%);
+      border-color: #e9d5ff;
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.6);
+    }
+    .purple-card-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+    }
+    .purple-main-title {
+      font-size: 13px;
+      font-weight: 900;
+      color: #f3e8ff;
+      letter-spacing: -0.2px;
+    }
+    .purple-tag {
+      margin-left: auto;
+      background: #a855f7;
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 900;
+      padding: 1px 6px;
+      border-radius: 3px;
+    }
+    .purple-subtext {
+      font-size: 10.5px;
+      color: #d8b4fe;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    /* HUD RESULT DISPLAY */
+    .hud-result-container {
+      display: none;
+      background: #0f172a;
+      border: 1.5px solid #334155;
+      border-radius: 12px;
+      margin-top: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+      animation: hudSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes hudSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hud-result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 12px;
+      background: #1e293b;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .hud-status-badge {
+      font-size: 11.5px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+    .hud-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 2px 6px;
+    }
+    .hud-result-body {
+      padding: 12px;
+    }
+    .hud-title {
+      font-size: 14px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .hud-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .hud-metric-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 6px 4px;
+      text-align: center;
+    }
+    .hud-metric-card .metric-label {
+      display: block;
+      font-size: 9px;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .hud-metric-card .metric-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13.5px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .hud-desc {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* ================================================================
+       IMAGE VIEWER & LIGHTBOX (提供画像のモーダル拡大表示)
+       ================================================================ */
+    .shutter-gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    @media (min-width: 540px) {
+      .shutter-gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .shutter-img-card {
+      background: #ffffff;
+      border: 2px solid var(--text-main);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px var(--text-main);
+      cursor: pointer;
+    }
+    .shutter-img-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1.5px solid var(--text-main);
+    }
+    .shutter-img-caption {
+      font-size: 11.5px;
+      font-weight: 800;
+      padding: 6px 8px;
+      background: #fbf7ed;
+      color: var(--text-main);
+      line-height: 1.35;
+    }
+
+    /* ライトボックスモーダル */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 14px;
+      touch-action: pan-y;
+    }
+    .lightbox-modal.active { display: flex; }
+    .lightbox-modal img {
+      max-width: 100%;
+      max-height: 85vh;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: var(--accent-red);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 900;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ================================================================
+       BOTTOM MOBILE NAVIGATION (片手操作ボトムバー)
+       ================================================================ */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: var(--border-heavy);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 6px 4px calc(6px + var(--safe-bottom));
+      z-index: 100;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text-main);
+      font-size: 9.5px;
+      font-weight: 800;
+      cursor: pointer;
+      padding: 2px 4px;
+      flex: 1;
+      white-space: nowrap;
+    }
+    .nav-item svg {
+      width: 18px;
+      height: 18px;
+      margin-bottom: 2px;
+      fill: currentColor;
+    }
+    .nav-item.active {
+      color: var(--accent-red);
+      transform: translateY(-1px);
+    }
+
+    /* 押し引きチェックリスト */
+    .checklist-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 8px 0;
+    }
+    .check-item {
+      background: #ffffff;
+      border: 1.5px solid var(--text-main);
+      border-radius: 3px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .check-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent-red);
+    }
+
+    /* アクションボタン */
+    .action-btn {
+      background: var(--accent-red);
+      color: #ffffff;
+      border: var(--border-strong);
+      border-radius: 4px;
+      box-shadow: var(--shadow-block-sm);
+      font-weight: 900;
+      font-size: 13px;
+      padding: 8px 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .action-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--text-main);
+    }
+
+    .prompt-box {
+      background: #090a0e;
+      border: 2px solid var(--text-main);
+      border-radius: 4px;
+      padding: 10px;
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 11.5px;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+      word-break: break-all;
+      width: 100%;
+      height: 160px;
+      box-sizing: border-box;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="header-back-btn" title="総合ポータルへ戻る">◀ HOME</a>
+      <span class="header-badge">スマスロ最新解析</span>
+      <div class="header-title">北斗の拳 転生の章2 ポータル</div>
+    </div>
+    <div class="header-right">
+      <button class="view-toggle-btn" onclick="toggleMobileCardView()" id="viewToggleBtn">📱 スマホ見やすく切替</button>
+    </div>
+  </header>
+
+  <!-- 上部サブナビゲーション（タブ切り替え） -->
+  <nav class="top-subnav">
+    <button class="subnav-btn active" data-tab="tab-shutter">🚪 シャッター＆モード判別</button>
+    <button class="subnav-btn" data-tab="tab-specs">📊 基本スペック＆機械割</button>
+    <button class="subnav-btn" data-tab="tab-zones">🎯 ゾーン・前兆・あべし表</button>
+    <button class="subnav-btn" data-tab="tab-deduction">🏆 設定推測＆トロフィー・枠ランプ</button>
+    <button class="subnav-btn" data-tab="tab-checklist">✅ 押し引きチェック＆AI相談</button>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================== -->
+    <!-- タブ1: シャッター＆モードB/C判別（ユーザー提供資料・最重要） -->
+    <!-- ============================================================== -->
+    <section id="tab-shutter" class="tab-pane active">
+
+      <!-- 最重要ハイライトバナー -->
+      <div class="card" style="border: 3px solid var(--accent-red);">
+        <div class="card-header">
+          <div class="card-title" style="color: var(--accent-red);">
+            🚪 【設定判別フォルダ内資料完全網羅】シャッター演出＆モードB/C判別法
+          </div>
+          <span class="card-tag tag-red">超重要立ち回り</span>
+        </div>
+
+        <div class="banner-box banner-gold">
+          <b class="banner-box-title">【ホール実戦の核心：シャッター落下の発生区間を見逃すな！】</b><br>
+          通常時のレバーON時に発生する「シャッター落下演出」は、<b>発生した「あべし数」によって滞在モードを完全に見破ることが可能</b>です！<br>
+          特に<b>「37〜45あべし」「166〜173あべし」「288〜300あべし」</b>等でシャッターが出現した台は<b>【モードB以上（天井896あべし）確定】</b>！256あべし超えで捨てられている台をハイエナ＆高設定看破する最強の武器となります。
+        </div>
+
+        <!-- インタラクティブ：シャッター判別クイックチェッカー（HOKUTO APEX CYBER CONSOLE） -->
+        <div class="shutter-console">
+          <!-- コンソール上部ヘッダー -->
+          <div class="console-header">
+            <div class="console-title-group">
+              <span class="console-badge">HOKUTO APEX ANALYZER</span>
+              <div class="console-title">
+                🚪 シャッター発生あべし 即時解析コンソール
+              </div>
+            </div>
+            <div class="console-live-pill">
+              <span class="pulse-indicator"></span>
+              <span>LIVE READY</span>
+            </div>
+          </div>
+          
+          <p class="console-desc">
+            実戦中、レバーONでシャッターが落ちた<b>「あべし数」をワンタップ</b>。滞在モード期待度・天井到達ライン・立ち回り方針を即座にシミュレートします。
+          </p>
+
+          <!-- カテゴリ1: モードB以上確定ピンポイント帯 (金箔ゴールドカード) -->
+          <div class="console-section-title">
+            <span style="color:#f59e0b;">★</span>
+            <span>【即ツモ確定】モードB以上（天井896以内）確定帯</span>
+            <span class="badge-gold">超激アツ</span>
+          </div>
+          <div class="console-grid-gold">
+            <button class="shutter-card shutter-gold" onclick="checkShutter('37-45', this)">
+              <div>
+                <span class="card-range">37 〜 45</span>
+                <span class="card-unit">あべし</span>
+              </div>
+              <span class="card-status-tag">★ B以上確定</span>
+            </button>
+            <button class="shutter-card shutter-gold" onclick="checkShutter('166-173', this)">
+              <div>
+                <span class="card-range">166 〜 173</span>
+                <span class="card-unit">あべし</span>
+              </div>
+              <span class="card-status-tag">★ B以上確定</span>
+            </button>
+            <button class="shutter-card shutter-gold" onclick="checkShutter('288-300', this)">
+              <div>
+                <span class="card-range">288 〜 300</span>
+                <span class="card-unit">あべし</span>
+              </div>
+              <span class="card-status-tag">★ B以上確定</span>
+            </button>
+            <button class="shutter-card shutter-gold" onclick="checkShutter('421-429', this)">
+              <div>
+                <span class="card-range">421 〜 429</span>
+                <span class="card-unit">あべし</span>
+              </div>
+              <span class="card-status-tag">★ B以上確定</span>
+            </button>
+            <button class="shutter-card shutter-gold" onclick="checkShutter('489-495', this)">
+              <div>
+                <span class="card-range">489 〜 495</span>
+                <span class="card-unit">あべし</span>
+              </div>
+              <span class="card-status-tag">★ B以上確定</span>
+            </button>
+          </div>
+
+          <!-- カテゴリ2: モードB以上濃厚帯 (サイバーネイビーグラスカード) -->
+          <div class="console-section-title" style="margin-top:14px;">
+            <span style="color:#60a5fa;">●</span>
+            <span>【前兆看破】モードB以上 濃厚ゾーン</span>
+            <span class="badge-blue">通常A否定</span>
+          </div>
+          <div class="console-grid-blue">
+            <button class="shutter-card shutter-blue" onclick="checkShutter('1-64', this)">
+              <span class="card-range">1 〜 64</span>
+              <span class="card-sub-label">あべし (濃厚)</span>
+            </button>
+            <button class="shutter-card shutter-blue" onclick="checkShutter('129-192', this)">
+              <span class="card-range">129 〜 192</span>
+              <span class="card-sub-label">あべし (濃厚)</span>
+            </button>
+            <button class="shutter-card shutter-blue" onclick="checkShutter('257-320', this)">
+              <span class="card-range">257 〜 320</span>
+              <span class="card-sub-label">あべし (濃厚)</span>
+            </button>
+            <button class="shutter-card shutter-blue" onclick="checkShutter('385-448', this)">
+              <span class="card-range">385 〜 448</span>
+              <span class="card-sub-label">あべし (濃厚)</span>
+            </button>
+            <button class="shutter-card shutter-blue" onclick="checkShutter('449-512', this)">
+              <span class="card-range">449 〜 512</span>
+              <span class="card-sub-label">あべし (濃厚)</span>
+            </button>
+            <button class="shutter-card shutter-slate" onclick="checkShutter('other', this)">
+              <span class="card-range">上記以外の帯</span>
+              <span class="card-sub-label">通常フェイク</span>
+            </button>
+          </div>
+
+          <!-- カテゴリ3: スロニキ条件 (ネオンパープル) -->
+          <button class="shutter-card shutter-purple-wide" onclick="checkShutter('suroniki', this)">
+            <div class="purple-card-head">
+              <span style="font-size:16px;">🔥</span>
+              <span class="purple-main-title">【スロニキ暴露】モードC（天井576あべし以内）看破3条件</span>
+              <span class="purple-tag">裏技公開</span>
+            </div>
+            <div class="purple-subtext">
+              ① 37〜38 & 43〜45シャッター ＋ ② 128ウイグル発展 ＋ ③ 差枚マイナス
+            </div>
+          </button>
+
+          <!-- 判定結果カード (Arcade HUD Style) -->
+          <div id="checkerResult" class="hud-result-container">
+            <div class="hud-result-header">
+              <div id="hudBadge" class="hud-status-badge"></div>
+              <button class="hud-close-btn" onclick="closeCheckerResult()">✕ 閉じる</button>
+            </div>
+            <div class="hud-result-body">
+              <div id="resTitle" class="hud-title"></div>
+              
+              <!-- 3連ステータスメトリクス -->
+              <div class="hud-metric-grid">
+                <div class="hud-metric-card">
+                  <span class="metric-label">滞在推測モード</span>
+                  <span id="metricMode" class="metric-val" style="color:#f59e0b;">-</span>
+                </div>
+                <div class="hud-metric-card">
+                  <span class="metric-label">最大天井目安</span>
+                  <span id="metricCeiling" class="metric-val" style="color:#ef4444;">-</span>
+                </div>
+                <div class="hud-metric-card">
+                  <span class="metric-label">立ち回り指示</span>
+                  <span id="metricAction" class="metric-val" style="color:#10b981;">-</span>
+                </div>
+              </div>
+
+              <div id="resDesc" class="hud-desc"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ① モードB以上確定あべし（iPhone見やすいカード＆テーブル） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🚨 ① シャッター発生で「モードB以上確定」ピンポイント区間</div>
+          <span class="card-tag tag-purple">激アツ即ツモ</span>
+        </div>
+        
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          以下の極めて狭い特定ゲーム数でシャッターが落下した場合、<b>モードB以上（天井896あべし）が確定</b>します！
+        </p>
+
+        <!-- スマホ用カード表示 -->
+        <div class="mobile-spec-grid">
+          <div class="spec-card-item" style="border:2px solid #b91c1c; background:#fef2f2;">
+            <div class="spec-card-setting" style="color:#b91c1c;">最優先チェック</div>
+            <div class="spec-card-val" style="color:#b91c1c; font-size:16px;">37〜45<span style="font-size:12px;">あべし</span></div>
+            <div class="spec-card-sub">★モードB以上確定！</div>
+          </div>
+          <div class="spec-card-item" style="border:2px solid #b91c1c; background:#fef2f2;">
+            <div class="spec-card-setting" style="color:#b91c1c;">天国抜け直後</div>
+            <div class="spec-card-val" style="color:#b91c1c; font-size:16px;">166〜173<span style="font-size:12px;">あべし</span></div>
+            <div class="spec-card-sub">★モードB以上確定！</div>
+          </div>
+          <div class="spec-card-item" style="border:2px solid #b91c1c; background:#fef2f2;">
+            <div class="spec-card-setting" style="color:#b91c1c;">256抜け直後</div>
+            <div class="spec-card-val" style="color:#b91c1c; font-size:16px;">288〜300<span style="font-size:12px;">あべし</span></div>
+            <div class="spec-card-sub">★モードB以上確定！</div>
+          </div>
+          <div class="spec-card-item" style="border:2px solid #b91c1c; background:#fef2f2;">
+            <div class="spec-card-setting" style="color:#b91c1c;">中盤チャンス</div>
+            <div class="spec-card-val" style="color:#b91c1c; font-size:16px;">421〜429<span style="font-size:12px;">あべし</span></div>
+            <div class="spec-card-sub">★モードB以上確定！</div>
+          </div>
+          <div class="spec-card-item" style="border:2px solid #b91c1c; background:#fef2f2;">
+            <div class="spec-card-setting" style="color:#b91c1c;">モードC手前</div>
+            <div class="spec-card-val" style="color:#b91c1c; font-size:16px;">489〜495<span style="font-size:12px;">あべし</span></div>
+            <div class="spec-card-sub">★モードB以上確定！</div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>要注目のピンポイントあべし</th><th>シャッター出現時の示唆内容</th><th>立ち回り判断</th></tr>
+            </thead>
+            <tbody>
+              <tr class="row-strong-red"><td style="font-size:14px; font-weight:900; color:#b91c1c;">37 〜 45 あべし</td><td><b class="text-red">モードB以上 確定！！</b></td><td>次回ATまで当たるまで続行推奨</td></tr>
+              <tr class="row-strong-red"><td style="font-size:14px; font-weight:900; color:#b91c1c;">166 〜 173 あべし</td><td><b class="text-red">モードB以上 確定！！</b></td><td>天国スルー後でも即ヤメ厳禁</td></tr>
+              <tr class="row-strong-red"><td style="font-size:14px; font-weight:900; color:#b91c1c;">288 〜 300 あべし</td><td><b class="text-red">モードB以上 確定！！</b></td><td>256抜けの拾い目で最強の押し根拠</td></tr>
+              <tr class="row-strong-red"><td style="font-size:14px; font-weight:900; color:#b91c1c;">421 〜 429 あべし</td><td><b class="text-red">モードB以上 確定！！</b></td><td>モードB天井(896)射程圏内</td></tr>
+              <tr class="row-strong-red"><td style="font-size:14px; font-weight:900; color:#b91c1c;">489 〜 495 あべし</td><td><b class="text-red">モードB以上 確定！！</b></td><td>モードC(576)の可能性も大</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ② シャッター出現で「モードB以上濃厚」区間 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🚪 ② シャッター出現で「モードB以上濃厚」区間一覧</div>
+          <span class="card-tag tag-gold">濃厚ゾーン</span>
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>規定あべし区間</th><th>シャッター出現時の示唆</th><th>理由・フェイク前兆法則</th></tr>
+            </thead>
+            <tbody>
+              <tr class="row-highlight"><td><b>1 〜 64 あべし</b></td><td><b class="text-gold">モードB以上 濃厚</b></td><td>通常モードAでは前兆非発生ゾーンのため</td></tr>
+              <tr class="row-highlight"><td><b>129 〜 192 あべし</b></td><td><b class="text-gold">モードB以上 濃厚</b></td><td>モードA非前兆帯。ここでザワつけばモードB/C濃厚</td></tr>
+              <tr class="row-highlight"><td><b>257 〜 320 あべし</b></td><td><b class="text-gold">モードB以上 濃厚</b></td><td>256超えでシャッター落下＝モードB期待度激高</td></tr>
+              <tr class="row-highlight"><td><b>385 〜 448 あべし</b></td><td><b class="text-gold">モードB以上 濃厚</b></td><td>モードAの前兆マップ外</td></tr>
+              <tr class="row-highlight"><td><b>449 〜 512 あべし</b></td><td><b class="text-gold">モードB以上 濃厚</b></td><td>モードC(576)視野の特大サイン</td></tr>
+              <tr><td>※上記以外のあべし区間</td><td><b>無効（示唆なし）</b></td><td>規定前兆区間内の通常ガセ演出のため無効</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ③ スロニキ氏 モードC狙い暴露まとめ -->
+      <div class="card" style="border: 2px solid #6b21a8; background: #faf5ff;">
+        <div class="card-header" style="border-bottom: 2px solid #6b21a8;">
+          <div class="card-title" style="color: #6b21a8;">
+            🔥 【スロニキ氏 実戦データ暴露】モードC（576あべし以内）濃厚パターン
+          </div>
+          <span class="card-tag" style="background:#6b21a8; color:#ffffff;">実践値暴露</span>
+        </div>
+
+        <div class="banner-box banner-info">
+          <b>【3大条件成立で実戦上モードC（576あべし以内）当選が濃厚！】</b><br>
+          <ol style="padding-left:18px; margin-top:4px; line-height:1.7;">
+            <li>✅ <b>シャッターが「37〜38あべし」「43〜45あべし」で1回ずつ発生</b>（計2回）</li>
+            <li>✅ <b>128あべしでの連続演出発展先が「ウイグル」</b></li>
+            <li>✅ <b>当日のスランプグラフが「差枚マイナス」</b></li>
+          </ol>
+          ➡ 上記3点が揃った台は、<b>実戦上ほぼ576あべし以内にAT直撃・解除</b>！見つけたら576あべしまでブン回し推奨です。
+        </div>
+      </div>
+
+      <!-- 提供写真ギャラリー（タップで拡大） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📷 【資料写真】設定判別フォルダ内 シャッター＆前兆画像</div>
+          <span class="card-tag tag-blue">タップで拡大</span>
+        </div>
+        <p style="font-size:11.5px; color:var(--text-sub); margin-bottom:8px;">
+          タップするとiPhone全画面で拡大して鮮明に確認できます。
+        </p>
+
+        <div class="shutter-gallery">
+          <div class="shutter-img-card" onclick="openLightbox('images/tense_shutter1.jpg')">
+            <img src="images/tense_shutter1.jpg" alt="天命移行あべし示唆＆ゾーン毎のフェイク前兆発生率" onerror="this.src='北斗転生/IMG_7177.jpg'">
+            <div class="shutter-img-caption">📷 IMG_7177: 天命移行あべし示唆＆フェイク前兆率</div>
+          </div>
+          <div class="shutter-img-card" onclick="openLightbox('images/tense_shutter2.jpg')">
+            <img src="images/tense_shutter2.jpg" alt="北斗転生2 モードB以上判別法" onerror="this.src='北斗転生/IMG_7179.jpg'">
+            <div class="shutter-img-caption">📷 IMG_7179: シャッター落下 モードB以上判別法</div>
+          </div>
+          <div class="shutter-img-card" onclick="openLightbox('images/tense_shutter3.jpg')">
+            <img src="images/tense_shutter3.jpg" alt="スロニキ モードC狙い暴露" onerror="this.src='北斗転生/IMG_7200.jpg'">
+            <div class="shutter-img-caption">📷 IMG_7200: スロニキ氏 モードC暴露条件</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ2: 基本スペック＆機械割（ちょんぼりすた準拠） -->
+    <!-- ============================================================== -->
+    <section id="tab-specs" class="tab-pane">
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🎰 スマスロ 北斗の拳 転生の章2 基本スペックマトリックス</div>
+          <span class="card-tag tag-red">ちょんぼりすた準拠</span>
+        </div>
+
+        <div class="banner-box banner-gold">
+          <b>【スペック概要】</b><br>
+          ・メーカー: サミー（銀座） ｜ タイプ: スマスロ AT機（純増 約4.0枚/G）<br>
+          ・コイン単価: 約3.5円 ｜ 50枚ベース: 約31.8G<br>
+          ・通常時天井: <b>最大 1,536 あべし</b> ｜ リセット天井: <b>1,280 あべし</b>
+        </div>
+
+        <!-- iPhone用カード表示（設定1〜6） -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📱 設定別スペック早見カード（スマホ見やすい表示）
+        </div>
+        <div class="mobile-spec-grid">
+          <div class="spec-card-item">
+            <div class="spec-card-setting">設定1</div>
+            <div class="spec-card-val">1/366.0</div>
+            <div class="spec-card-sub" style="color:#555;">割 97.6%</div>
+          </div>
+          <div class="spec-card-item">
+            <div class="spec-card-setting">設定2</div>
+            <div class="spec-card-val">1/357.0</div>
+            <div class="spec-card-sub" style="color:#555;">割 98.4%</div>
+          </div>
+          <div class="spec-card-item">
+            <div class="spec-card-setting">設定3</div>
+            <div class="spec-card-val">1/336.3</div>
+            <div class="spec-card-sub" style="color:#555;">割 100.7%</div>
+          </div>
+          <div class="spec-card-item" style="background:#fffbeb; border-color:#b45309;">
+            <div class="spec-card-setting" style="color:#b45309;">設定4</div>
+            <div class="spec-card-val" style="color:#b45309;">1/298.7</div>
+            <div class="spec-card-sub" style="color:#b45309;">割 106.2%</div>
+          </div>
+          <div class="spec-card-item" style="background:#fffbeb; border-color:#b45309;">
+            <div class="spec-card-setting" style="color:#b45309;">設定5</div>
+            <div class="spec-card-val" style="color:#b45309;">1/283.2</div>
+            <div class="spec-card-sub" style="color:#b45309;">割 111.1%</div>
+          </div>
+          <div class="spec-card-item spec-card-s6">
+            <div class="spec-card-setting">設定6 ★最高峰</div>
+            <div class="spec-card-val">1/273.1</div>
+            <div class="spec-card-sub">割 114.9%</div>
+          </div>
+        </div>
+
+        <!-- 完全テーブル（設定6ハイライト適用） -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          📊 打ち方・詳細スペック表
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>設定</th>
+                <th>AT初当たり確率</th>
+                <th>機械割 (出玉率)</th>
+                <th>天破の刻 初当り</th>
+                <th>初当たり期待枚数</th>
+                <th>設定判別での重要度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 366.0</td><td>97.6%</td><td>1 / 102.5</td><td>約 510枚</td><td>厳しい回収域</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 357.0</td><td>98.4%</td><td>1 / 100.2</td><td>約 512枚</td><td>偶数ベース</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 336.3</td><td>100.7%</td><td>1 / 96.4</td><td>約 515枚</td><td>奇数ベース</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 298.7</td><td><b class="text-gold">106.2%</b></td><td>1 / 90.1</td><td>約 520枚</td><td><b>勝負ライン</b></td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1 / 283.2</td><td><b class="text-gold">111.1%</b></td><td>1 / 84.5</td><td>約 535枚</td><td><b>高設定域！</b></td></tr>
+              <tr class="row-setting-6">
+                <td class="col-setting-6">設定6</td>
+                <td><b class="val-best">1 / 273.1</b></td>
+                <td><b class="val-best">114.9%</b></td>
+                <td><b class="val-best">1 / 78.4</b></td>
+                <td><b class="val-best">約 550枚</b></td>
+                <td><b>★最高峰エクストラ！</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 小役確率完全一覧（全設定共通） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🍒 小役確率一覧＆成立時の役割（全設定共通）</div>
+          <span class="card-tag tag-purple">全設定共通</span>
+        </div>
+
+        <div class="banner-box banner-info">
+          <b>【小役に設定差は一切なし！カウント不要】</b><br>
+          ・ハズレ、リプレイ、ベル、弱チェリー、強チェリー、スイカ、チャンス目等の<b>すべての小役確率は「全設定共通」</b>です。<br>
+          ・小役そのものをカウントして設定看破することはできませんが、<b>各役成立時の「状態移行率」や「低確・通常時の天破の刻当選率」に特大の設定差</b>が存在するため、小役確率を把握しておくことは必須です！
+        </div>
+
+        <!-- 主要レア役早見カード（スマホ最適化） -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:10px 0 4px;">
+          📱 主要レア役合算確率（早見カード）
+        </div>
+        <div class="mobile-spec-grid">
+          <div class="spec-card-item">
+            <div class="spec-card-setting" style="color:#dc2626;">🍒 弱チェリー合算</div>
+            <div class="spec-card-val" style="color:#dc2626; font-size:17px;">1 / 99.6</div>
+            <div class="spec-card-sub" style="color:#555;">あべし加算・天破契機</div>
+          </div>
+          <div class="spec-card-item" style="border:2px solid #b91c1c; background:#fef2f2;">
+            <div class="spec-card-setting" style="color:#b91c1c;">🍒 強チェリー合算</div>
+            <div class="spec-card-val" style="color:#b91c1c; font-size:17px;">1 / 198.6</div>
+            <div class="spec-card-sub" style="color:#b91c1c;">天破＆AT本命契機</div>
+          </div>
+          <div class="spec-card-item" style="border:2px solid #15803d; background:#f0fdf4;">
+            <div class="spec-card-setting" style="color:#15803d;">🍉 スイカ</div>
+            <div class="spec-card-val" style="color:#15803d; font-size:17px;">1 / 79.9</div>
+            <div class="spec-card-sub" style="color:#15803d;">内部高確移行メイン</div>
+          </div>
+          <div class="spec-card-item">
+            <div class="spec-card-setting" style="color:#b45309;">⚡ チャンス目</div>
+            <div class="spec-card-val" style="color:#b45309; font-size:17px;">1 / 199.2</div>
+            <div class="spec-card-sub" style="color:#555;">天破の刻 抽選</div>
+          </div>
+        </div>
+
+        <!-- 完全小役確率テーブル -->
+        <div style="font-size:12.5px; font-weight:800; color:var(--text-main); margin:12px 0 4px;">
+          📊 小役確率・詳細一覧表（全小役完全網羅）
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>役名</th>
+                <th>確率</th>
+                <th>百分率</th>
+                <th>設定差</th>
+                <th>主な役割・成立時の挙動</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>弱チェリー合算</b></td>
+                <td><b style="color:#b91c1c;">1 / 99.6</b></td>
+                <td>約 1.00%</td>
+                <td>全設定共通</td>
+                <td>あべし加算、低確・通常時の天破の刻抽選</td>
+              </tr>
+              <tr style="background:#fbfbfb;">
+                <td style="padding-left:16px; font-size:11px;">├ 弱チェリーA</td>
+                <td style="font-size:11px;">1 / 199.2</td>
+                <td style="font-size:11px;">約 0.50%</td>
+                <td style="font-size:11px;">全設定共通</td>
+                <td style="font-size:11px;">角チェリー＋右リール中段ベル</td>
+              </tr>
+              <tr style="background:#fbfbfb;">
+                <td style="padding-left:16px; font-size:11px;">└ 弱チェリーB</td>
+                <td style="font-size:11px;">1 / 199.2</td>
+                <td style="font-size:11px;">約 0.50%</td>
+                <td style="font-size:11px;">全設定共通</td>
+                <td style="font-size:11px;">角チェリー＋右リール中段ボーナス絵柄以外</td>
+              </tr>
+              <tr class="row-strong-red">
+                <td><b>強チェリー合算</b></td>
+                <td><b style="color:#b91c1c;">1 / 198.6</b></td>
+                <td>約 0.50%</td>
+                <td>全設定共通</td>
+                <td><b>天破の刻・AT直撃の本命契機</b>（高確中は天破濃厚）</td>
+              </tr>
+              <tr style="background:#fbfbfb;">
+                <td style="padding-left:16px; font-size:11px;">├ 強チェリーA</td>
+                <td style="font-size:11px;">1 / 397.2</td>
+                <td style="font-size:11px;">約 0.25%</td>
+                <td style="font-size:11px;">全設定共通</td>
+                <td style="font-size:11px;">中段チェリー＋右リール中段ベル否定</td>
+              </tr>
+              <tr style="background:#fbfbfb;">
+                <td style="padding-left:16px; font-size:11px;">└ 強チェリーB</td>
+                <td style="font-size:11px;">1 / 397.2</td>
+                <td style="font-size:11px;">約 0.25%</td>
+                <td style="font-size:11px;">全設定共通</td>
+                <td style="font-size:11px;">中段チェリー＋右リール中段ベル</td>
+              </tr>
+              <tr class="row-highlight">
+                <td><b>スイカ</b></td>
+                <td><b style="color:#15803d;">1 / 79.9</b></td>
+                <td>約 1.25%</td>
+                <td>全設定共通</td>
+                <td><b>高確移行のメイン契機</b>（スイカ契機の高確移行率に設定差）</td>
+              </tr>
+              <tr>
+                <td><b>チャンス目</b></td>
+                <td><b>1 / 199.2</b></td>
+                <td>約 0.50%</td>
+                <td>全設定共通</td>
+                <td>天破の刻 抽選契機</td>
+              </tr>
+              <tr>
+                <td><b>勝舞揃い</b></td>
+                <td><b>1 / 198.6</b></td>
+                <td>約 0.50%</td>
+                <td>全設定共通</td>
+                <td>通常時の状態昇格・天破の刻契機</td>
+              </tr>
+              <tr class="row-setting-6">
+                <td><b>確定チェリー</b></td>
+                <td><b class="val-best">1 / 16384.0</b></td>
+                <td>約 0.006%</td>
+                <td>全設定共通</td>
+                <td><b>★AT直撃確定＋北斗揃い期待度大幅UP！</b></td>
+              </tr>
+              <tr>
+                <td><b>右下がりベル</b></td>
+                <td>1 / 8.2</td>
+                <td>約 12.2%</td>
+                <td>全設定共通</td>
+                <td>押し順ベル（小役払い出し）</td>
+              </tr>
+              <tr>
+                <td><b>リプレイ</b></td>
+                <td>1 / 8.7</td>
+                <td>約 11.5%</td>
+                <td>全設定共通</td>
+                <td>通常リプレイ</td>
+              </tr>
+              <tr>
+                <td><b>ハズレ</b></td>
+                <td>1 / 1.4</td>
+                <td>約 71.4%</td>
+                <td>全設定共通</td>
+                <td>押し順不正解ハズレ含む</td>
+              </tr>
+              <tr style="background:#f1f5f9;">
+                <td><b>50枚ベース</b></td>
+                <td colspan="4"><b>約 31.8 G / 50枚</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ3: ゾーン・前兆・あべし表（IMG_7177完全データ化） -->
+    <!-- ============================================================== -->
+    <section id="tab-zones" class="tab-pane">
+
+      <!-- 天命移行あべし示唆カード -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">⚡ 【IMG_7177】天命移行あべし示唆まとめ</div>
+          <span class="card-tag tag-red">前兆移行でモード看破</span>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>天命の刻 移行あべし</th><th>示唆内容</th><th>次回天井目安</th></tr>
+            </thead>
+            <tbody>
+              <tr class="row-strong-red"><td style="font-weight:900; color:#b91c1c;">1 〜 64 あべし</td><td><b class="text-red">モードB以上 濃厚</b></td><td>最大 896 あべし</td></tr>
+              <tr class="row-strong-red"><td style="font-weight:900; color:#b91c1c;">129 〜 192 あべし</td><td><b class="text-red">モードB以上 濃厚</b></td><td>最大 896 あべし</td></tr>
+              <tr class="row-strong-red"><td style="font-weight:900; color:#b91c1c;">257 〜 320 あべし</td><td><b class="text-red">モードB以上 濃厚</b></td><td>最大 896 あべし</td></tr>
+              <tr class="row-highlight"><td><b>321 〜 384 あべし</b></td><td><b class="text-gold">モードB以上のチャンス</b></td><td>モードB/C期待度UP</td></tr>
+              <tr class="row-strong-red"><td style="font-weight:900; color:#b91c1c;">385 〜 448 あべし</td><td><b class="text-red">モードB以上 濃厚</b></td><td>最大 896 あべし</td></tr>
+              <tr class="row-strong-red"><td style="font-weight:900; color:#b91c1c;">449 〜 512 あべし</td><td><b class="text-red">モードB以上 濃厚</b></td><td>モードC(576)の可能性特大</td></tr>
+              <tr class="row-highlight"><td><b>705 〜 768 あべし</b></td><td><b class="text-gold">モードB のチャンス</b></td><td>モードB天井直前</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ゾーン毎のフェイク前兆発生率完全対比表 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">📋 ゾーン毎のフェイク前兆発生率 完全対比マトリックス</div>
+          <span class="card-tag tag-blue">モード看破マトリックス</span>
+        </div>
+
+        <div class="banner-box banner-gold" style="margin-bottom:8px; font-size:12px;">
+          <b>【マトリックス着色ルール】</b><br>
+          <span style="background:#eefde6; color:#b91c1c; font-weight:900; border:1px solid #16a34a; padding:1px 6px; border-radius:3px; display:inline-block; margin-top:2px;">緑背景＆濃赤文字セル</span> は、「天命移行あべし示唆」でモードB/Cのチャンス・濃厚とされる注目区間です。通常モードAではフェイク前兆が非発生（10%以下）のため、ここで前兆が発生すればモードB以上（最大天井896あべし）の期待度が極めて高くなります！
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>規定あべし</th>
+                <th>モードA<br><span style="font-size:10px;">(最大1536)</span></th>
+                <th>モードB<br><span style="font-size:10px;">(最大896)</span></th>
+                <th>モードC<br><span style="font-size:10px;">(最大576)</span></th>
+                <th>天国<br><span style="font-size:10px;">(最大128)</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1 〜 64</td><td>-</td><td class="cell-b-hint">10%以下</td><td class="cell-b-hint">10%以下</td><td>10%以下</td></tr>
+              <tr class="row-highlight"><td><b>65 〜 128</b></td><td>50%</td><td>50%</td><td>50%</td><td><b style="color:#b91c1c;">天井</b></td></tr>
+              <tr><td>129 〜 192</td><td>-</td><td class="cell-b-hint">10%以下</td><td class="cell-b-hint">10%以下</td><td>-</td></tr>
+              <tr class="row-strong-red"><td><b>193 〜 256</b></td><td><b class="text-red">発生濃厚</b></td><td><b class="text-red">発生濃厚</b></td><td><b class="text-red">発生濃厚</b></td><td>-</td></tr>
+              <tr><td>257 〜 320</td><td>-</td><td class="cell-b-hint">10%以下</td><td class="cell-b-hint">10%以下</td><td>-</td></tr>
+              <tr class="row-highlight"><td><b>321 〜 384</b></td><td>10%以下</td><td class="cell-b-hint">50%</td><td class="cell-b-hint">50%</td><td>-</td></tr>
+              <tr><td>385 〜 448</td><td>-</td><td class="cell-b-hint">10%以下</td><td class="cell-b-hint">10%以下</td><td>-</td></tr>
+              <tr><td>449 〜 512</td><td>-</td><td class="cell-b-hint">10%以下</td><td class="cell-b-hint">10%以下</td><td>-</td></tr>
+              <tr class="row-strong-red"><td><b>513 〜 576</b></td><td><b class="text-red">発生濃厚</b></td><td><b class="text-red">発生濃厚</b></td><td><b style="color:#b91c1c;">天井</b></td><td>-</td></tr>
+              <tr><td>577 〜 640</td><td>10%以下</td><td>10%以下</td><td>-</td><td>-</td></tr>
+              <tr><td>641 〜 704</td><td>10%以下</td><td>10%以下</td><td>-</td><td>-</td></tr>
+              <tr class="row-highlight"><td><b>705 〜 768</b></td><td>10%以下</td><td class="cell-b-hint">50%</td><td>-</td><td>-</td></tr>
+              <tr><td>769 〜 832</td><td>10%以下</td><td>10%以下</td><td>-</td><td>-</td></tr>
+              <tr class="row-strong-red"><td><b>833 〜 896</b></td><td><b class="text-red">発生濃厚</b></td><td><b style="color:#b91c1c;">天井</b></td><td>-</td><td>-</td></tr>
+              <tr><td>897 〜 960</td><td>10%以下</td><td>-</td><td>-</td><td>-</td></tr>
+              <tr><td>961 〜 1024</td><td>10%以下</td><td>-</td><td>-</td><td>-</td></tr>
+              <tr><td>1025 〜 1088</td><td>10%以下</td><td>-</td><td>-</td><td>-</td></tr>
+              <tr><td>1089 〜 1152</td><td>10%以下</td><td>-</td><td>-</td><td>-</td></tr>
+              <tr><td>1153 〜 1216</td><td>10%以下</td><td>-</td><td>-</td><td>-</td></tr>
+              <tr class="row-strong-red"><td><b>1217 〜 1280</b></td><td><b class="text-red">発生濃厚</b></td><td>-</td><td>-</td><td>-</td></tr>
+              <tr class="row-highlight"><td><b>1281 〜 1344</b></td><td><b class="text-gold">50% (リセット天井)</b></td><td>-</td><td>-</td><td>-</td></tr>
+              <tr class="row-strong-red"><td><b>1345 〜 1408</b></td><td><b class="text-red">発生濃厚</b></td><td>-</td><td>-</td><td>-</td></tr>
+              <tr class="row-strong-red"><td><b>1409 〜 1472</b></td><td><b class="text-red">発生濃厚</b></td><td>-</td><td>-</td><td>-</td></tr>
+              <tr class="row-setting-6"><td><b>1473 〜 1536</b></td><td><b style="color:#b91c1c;">最深天井</b></td><td>-</td><td>-</td><td>-</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ4: 設定推測＆トロフィー・100G枠ランプ -->
+    <!-- ============================================================== -->
+    <section id="tab-deduction" class="tab-pane">
+
+      <!-- サミートロフィー（AT終了時） -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🏆 サミートロフィー示唆（サブ液晶）</div>
+          <span class="card-tag tag-red">確定演出</span>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>トロフィー種別</th><th>示唆内容</th><th>信頼度</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>銅トロフィー</b></td><td><b class="text-gold">設定2以上 濃厚</b></td><td>設定1否定</td></tr>
+              <tr><td><b>銀トロフィー</b></td><td><b class="text-blue">設定3以上 濃厚</b></td><td>設定1・2否定</td></tr>
+              <tr class="row-highlight"><td><b>金トロフィー</b></td><td><b class="text-gold">設定4以上 濃厚！</b></td><td><b>勝負続行ライン</b></td></tr>
+              <tr class="row-strong-red"><td><b>キリン柄トロフィー</b></td><td><b class="text-red">設定5以上 濃厚！</b></td><td><b>終日ブン回し推奨</b></td></tr>
+              <tr class="row-setting-6">
+                <td><b class="val-best">虹（レインボー）トロフィー</b></td>
+                <td><b class="val-best">設定6 濃厚！！</b></td>
+                <td><b>★最高設定確定！</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 100G毎の筐体枠ランプ示唆 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">💡 100G毎 筐体上部・枠ランプ設定示唆</div>
+          <span class="card-tag tag-gold">見逃し厳禁</span>
+        </div>
+        <div class="banner-box banner-info">
+          通常時100G消化ごとに、筐体上部中央ランプ（B）が点灯します。この点灯パターンに大きな設定示唆が存在します！
+        </div>
+
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>ランプ点灯パターン</th><th>示唆内容</th><th>立ち回り判断</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>白点灯 / 青点灯</b></td><td>デフォルト（モード示唆）</td><td>あべしゾーン確認</td></tr>
+              <tr class="row-highlight"><td><b>黄緑点灯</b></td><td><b class="text-green">設定2以上 濃厚</b></td><td>設定1否定</td></tr>
+              <tr class="row-highlight"><td><b>黄緑点滅</b></td><td><b class="text-gold">設定4以上 濃厚！</b></td><td>高設定濃厚</td></tr>
+              <tr class="row-strong-red"><td><b>紫点灯 / 赤点灯</b></td><td><b class="text-red">高設定示唆（強）</b></td><td>粘る根拠に十分</td></tr>
+              <tr class="row-setting-6">
+                <td><b class="val-best">金（ゴールド）点灯</b></td>
+                <td><b class="val-best">設定6 濃厚！！</b></td>
+                <td><b>★設定6確定！</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 天破の刻 初当たり確率 -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🌀 天破の刻（CZ）初当り確率と伝承モード</div>
+          <span class="card-tag tag-blue">小役からの突入率</span>
+        </div>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr><th>設定</th><th>天破の刻 初当り確率</th><th>通常・低確時の突入率</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-setting">設定1</td><td>1 / 102.5</td><td>低（レア役でも入りにくい）</td></tr>
+              <tr><td class="col-setting">設定2</td><td>1 / 100.2</td><td>低</td></tr>
+              <tr><td class="col-setting">設定3</td><td>1 / 96.4</td><td>中</td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定4</td><td>1 / 90.1</td><td><b class="text-gold">良好（弱役から頻繁に突入）</b></td></tr>
+              <tr class="row-highlight"><td class="col-setting">設定5</td><td>1 / 84.5</td><td><b class="text-gold">優秀</b></td></tr>
+              <tr class="row-setting-6"><td class="col-setting-6">設定6</td><td><b class="val-best">1 / 78.4</b></td><td><b class="val-best">★別格！弱チェリー・スイカでも天破連打</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- タブ5: 押し引きチェックリスト ＆ AI相談文ジェネレータ -->
+    <!-- ============================================================== -->
+    <section id="tab-checklist" class="tab-pane">
+
+      <!-- 設定6 押し引きチェックリスト -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">✅ スマスロ北斗転生2 現場押し引きチェックリスト</div>
+          <span class="card-tag tag-red">ホール用</span>
+        </div>
+
+        <div class="checklist-wrap">
+          <label class="check-item">
+            <input type="checkbox">
+            <span>🚪 <b>シャッター判別</b>: 37〜45、166〜173、288〜300等でシャッター落下（モードB以上確定）</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox">
+            <span>🔥 <b>スロニキ条件</b>: 37〜38＆43〜45シャッター、128ウイグル発展、差枚マイナス（モードC濃厚）</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox">
+            <span>🎯 <b>ゾーン解除</b>: 576あべし（モードC）および896あべし（モードB）以内の解除が頻発</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox">
+            <span>🌀 <b>天破の刻</b>: 低確・通常での弱チェリー・スイカから天破が軽い（1/85以下）</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox">
+            <span>💡 <b>100G枠ランプ</b>: 黄緑点滅（設定4以上）や金点灯（設定6濃厚）を確認</span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox">
+            <span>🏆 <b>サミートロフィー</b>: 金以上（設定4/5/6）の出現を確認</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- AI相談文ワンタップ生成ツール -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🤖 AI相談用プロンプト生成ツール（ワンタップコピー）</div>
+          <span class="card-tag tag-purple">AI連動</span>
+        </div>
+        <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">
+          現在の台のデータを入力すると、ChatGPTやClaude、Geminiにそのまま相談できるプロンプトを自動生成します。
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:6px; margin-bottom:8px;">
+          <div>
+            <span style="font-size:11px; font-weight:800;">現在のあべし数:</span>
+            <input type="number" id="inp_abeshi" value="295" style="width:100%; padding:6px; font-size:13px; font-weight:700; border:1px solid #141414; border-radius:3px;">
+          </div>
+          <div>
+            <span style="font-size:11px; font-weight:800;">AT初当り回数:</span>
+            <input type="number" id="inp_at_count" value="4" style="width:100%; padding:6px; font-size:13px; font-weight:700; border:1px solid #141414; border-radius:3px;">
+          </div>
+          <div>
+            <span style="font-size:11px; font-weight:800;">総通常ゲーム数:</span>
+            <input type="number" id="inp_games" value="1150" style="width:100%; padding:6px; font-size:13px; font-weight:700; border:1px solid #141414; border-radius:3px;">
+          </div>
+          <div>
+            <span style="font-size:11px; font-weight:800;">シャッター発生あべし:</span>
+            <input type="text" id="inp_shutter" value="38あべし、170あべし" style="width:100%; padding:6px; font-size:13px; font-weight:700; border:1px solid #141414; border-radius:3px;">
+          </div>
+        </div>
+
+        <button type="button" class="action-btn" onclick="generateAiPrompt()">
+          📋 AI相談文を生成してコピー
+        </button>
+
+        <textarea id="aiPromptArea" class="prompt-box" readonly></textarea>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ライトボックスモーダル -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <div class="lightbox-close">✕</div>
+    <img id="lightboxImg" src="" alt="拡大画像">
+  </div>
+
+  <!-- 下部固定モバイルクイックナビゲーション（ボトムバー） -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="switchNavTab('tab-shutter', this)">
+      <svg viewBox="0 0 24 24"><path d="M19 19V5c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v14H3v2h18v-2h-2zm-4-6h-2v-2h2v2z"/></svg>
+      <span>シャッター</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-specs', this)">
+      <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+      <span>スペック</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-zones', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      <span>ゾーン表</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-deduction', this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <span>設定判別</span>
+    </div>
+    <div class="nav-item" onclick="switchNavTab('tab-checklist', this)">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      <span>押し引き/AI</span>
+    </div>
+  </nav>
+
+  <script>
+    // タブ切り替え関数
+    function showTabById(tabId) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.subnav-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabId);
+      });
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.subnav-btn').forEach(btn => {
+      btn.onclick = () => showTabById(btn.dataset.tab);
+    });
+
+    function switchNavTab(tabId, el) {
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      el.classList.add('active');
+      showTabById(tabId);
+    }
+
+    // シャッター判別クイック判定ツール（HOKUTO CYBER CONSOLE）
+    function checkShutter(type, btnEl) {
+      const box = document.getElementById('checkerResult');
+      const badge = document.getElementById('hudBadge');
+      const title = document.getElementById('resTitle');
+      const desc = document.getElementById('resDesc');
+      const metricMode = document.getElementById('metricMode');
+      const metricCeiling = document.getElementById('metricCeiling');
+      const metricAction = document.getElementById('metricAction');
+
+      document.querySelectorAll('.shutter-card').forEach(b => b.classList.remove('selected'));
+      if (btnEl) btnEl.classList.add('selected');
+
+      box.style.display = 'block';
+
+      if (type === '37-45' || type === '166-173' || type === '288-300' || type === '421-429' || type === '489-495') {
+        badge.style.background = '#dc2626';
+        badge.style.color = '#ffffff';
+        badge.textContent = '🔥 モードB以上 確定！！！';
+        title.innerHTML = '【超激アツ】<span style="color:#f59e0b;">' + type + 'あべし</span> でシャッター落下を確認！';
+        metricMode.textContent = 'モードB/C/天国';
+        metricCeiling.textContent = '最大896あべし';
+        metricAction.textContent = 'AT当選まで全ツッパ';
+        metricAction.style.color = '#4ade80';
+        desc.innerHTML = 'ピンポイント区間でのシャッター作動は<b>【モードB以上（天井896あべし）確定】</b>です！<br>'
+          + '・発生あべし: <b>' + type + ' あべし</b><br>'
+          + '・最大天井: <b>896あべし</b>（モードC滞在なら576あべし）<br>'
+          + '・推奨立ち回り: <b>即ヤメ厳禁！次回AT当選まで確実に回してください。</b>天井到達時でも次回天国移行率が優遇されます。';
+      } else if (type === '1-64' || type === '129-192' || type === '257-320' || type === '385-448' || type === '449-512') {
+        badge.style.background = '#0284c7';
+        badge.style.color = '#ffffff';
+        badge.textContent = '⚡ モードB以上 濃厚！！';
+        title.innerHTML = '通常A否定ゾーン（<span style="color:#38bdf8;">' + type + 'あべし</span>）でシャッター発生！';
+        metricMode.textContent = 'モードB以上濃厚';
+        metricCeiling.textContent = '最大896あべし';
+        metricAction.textContent = '続行推奨 (期待値+)';
+        metricAction.style.color = '#38bdf8';
+        desc.innerHTML = '通常モードAでは前兆がほぼ発生しない（10%以下）ゾーンでシャッターが作動しました。<br>'
+          + '・発生あべし: <b>' + type + ' あべし</b><br>'
+          + '・モード期待度: <b>モードB以上（天井896あべし）濃厚</b><br>'
+          + '・推奨立ち回り: 256あべし超えの捨て台ならそのまま天井までツッパ可能。高設定ほどモードB・C移行率が優遇されます。';
+      } else if (type === 'suroniki') {
+        badge.style.background = '#9333ea';
+        badge.style.color = '#ffffff';
+        badge.textContent = '👑 スロニキ暴露：モードC濃厚！';
+        title.innerHTML = '【実戦データ裏ワザ】モードC（天井576あべし）当選濃厚パターン！';
+        metricMode.textContent = 'モードC濃厚';
+        metricCeiling.textContent = '最大576あべし';
+        metricAction.textContent = '576あべしまで必勝';
+        metricAction.style.color = '#c084fc';
+        desc.innerHTML = '以下の3条件が揃った場合、実戦上ほぼ<b>576あべし以内でAT解除</b>します：<br>'
+          + '① <b>37〜38</b> あべし ＆ <b>43〜45</b> あべし で1回ずつシャッター発生<br>'
+          + '② <b>128あべし</b> 発展演出が「ウイグル」<br>'
+          + '③ 当日のスランプグラフが「差枚マイナス」<br>'
+          + '➡ <b>576あべしまでブン回し確定！ハイエナ・後ヅモの最強トリガーです。</b>';
+      } else {
+        badge.style.background = '#475569';
+        badge.style.color = '#ffffff';
+        badge.textContent = '⚠️ 通常フェイク前兆帯';
+        title.textContent = '通常モードAでも前兆が発生しやすい区間です';
+        metricMode.textContent = 'モードAの可能性有';
+        metricCeiling.textContent = '最大1536あべし';
+        metricAction.textContent = '前兆成否を注視';
+        metricAction.style.color = '#94a3b8';
+        desc.innerHTML = '上記以外のあべし区間（例：65〜128、193〜256、513〜576など）でのシャッター演出は通常のフェイク前兆示唆のため、モードB以上の特定サインにはなりません。<br>'
+          + '小役確率やAT初当たり履歴、サミートロフィーなどと合わせて総合的に判別してください。';
+      }
+
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function closeCheckerResult() {
+      const box = document.getElementById('checkerResult');
+      if (box) box.style.display = 'none';
+      document.querySelectorAll('.shutter-card').forEach(b => b.classList.remove('selected'));
+    }
+
+    // iPhone用テーブル/カード切り替え
+    let isCardView = false;
+    function toggleMobileCardView() {
+      isCardView = !isCardView;
+      const btn = document.getElementById('viewToggleBtn');
+      btn.textContent = isCardView ? '📊 表形式で見る' : '📱 スマホ見やすく切替';
+      
+      document.querySelectorAll('.table-responsive').forEach(tbl => {
+        tbl.style.display = isCardView ? 'none' : 'block';
+      });
+      document.querySelectorAll('.mobile-spec-grid').forEach(grid => {
+        grid.style.display = isCardView ? 'grid' : 'grid';
+        if (isCardView) {
+          grid.style.transform = 'scale(1.02)';
+        } else {
+          grid.style.transform = 'none';
+        }
+      });
+    }
+
+    // ライトボックス開閉
+    function openLightbox(src) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      img.src = src;
+      modal.classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    // AI相談文生成
+    function generateAiPrompt() {
+      const abeshi = document.getElementById('inp_abeshi').value;
+      const atCount = document.getElementById('inp_at_count').value;
+      const games = document.getElementById('inp_games').value;
+      const shutter = document.getElementById('inp_shutter').value;
+
+      const prompt = `【パチスロ設定判別・押し引き相談】
+機種名：スマスロ 北斗の拳 転生の章2
+現在の稼働データ：
+・通常ゲーム数：${games} G
+・AT初当り回数：${atCount} 回 (確率: 1/${(games / atCount).toFixed(1)})
+・現在のあべし数：${abeshi} あべし
+・シャッター発生履歴：${shutter}
+
+【相談内容】
+上記の実戦データとシャッター発生履歴から、現在の滞在モード（モードBまたはモードCの可能性）および設定の高低（設定4/5/6期待度）を分析してください。
+また、この台を何あべしまで続行すべきか、押し引きの具体的な判断ラインをご教示ください。`;
+
+      const area = document.getElementById('aiPromptArea');
+      area.value = prompt;
+      area.select();
+      navigator.clipboard.writeText(prompt).then(() => {
+        alert('AI相談用プロンプトをクリップボードにコピーしました！ChatGPTやClaude、Geminiに貼り付けてご活用ください。');
+      }).catch(() => {
+        alert('プロンプトを生成しました。テキストエリアからコピーしてご利用ください。');
+      });
+    }
+  </script>
+</body>
+</html>
